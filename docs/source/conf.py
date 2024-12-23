@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'wofost-docs'
+project = 'WOFOST-Gym'
 copyright = '2024, Will Solow'
 author = 'Will Solow'
 release = '1.0.0'
@@ -14,7 +14,9 @@ release = '1.0.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinxcontrib.bibtex',
+]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -26,3 +28,5 @@ exclude_patterns = []
 
 html_theme = 'furo'
 html_static_path = ['_static']
+
+bibtex_bibfiles = ['references.bib']
