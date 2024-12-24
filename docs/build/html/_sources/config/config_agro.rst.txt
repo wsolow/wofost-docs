@@ -1,3 +1,5 @@
+.. _agro_config:
+
 Configurating a Simulation
 =============================
 
@@ -38,7 +40,7 @@ are used to load the historical weather for that ``latitude``, ``longitude`` and
 
 ``site_name`` and ``site_variation`` read the parameters from the ``env_config/site/site_name.yaml`` given the ``site_variation``. 
 
-Check that the ``site_variation`` appears under the ``Variations`` header in the ``site_name.yaml`` file. For more information on site configuration. See here <TODO>.
+Check that the ``site_variation`` appears under the ``Variations`` header in the ``site_name.yaml`` file. See :ref:`site_config`
 
 ``site_start_date`` and ``site_end_date`` set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.
 
@@ -63,7 +65,7 @@ In addition to the ``SiteCalendar``, there must be a valid ``CropCalendar``, whi
 
 ``crop_name`` and ``crop_variety`` read the parameters from the ``env_config/crop/crop_name.yaml`` given the ``crop_variety``. 
 
-Check that the ``crop_variety`` appears under the ``Varieties`` header in the ``crop_name.yaml`` file. For more information on site configuration. See here <TODO>.
+Check that the ``crop_variety`` appears under the ``Varieties`` header in the ``crop_name.yaml`` file. See :ref:`crop_config`
    
 ``crop_start_date`` and ``crop_end_date`` set the dates that the crop starts and the maximum length of the crop. The ``crop_start_date`` must come after the ``site_start_date`` as a 
 crop cannot be present without an active site, and the ``crop_end_date`` must happen before the ``site_end_date`` as there cannot be an active crop without an active site. 
@@ -79,7 +81,7 @@ The ``crop_end_type`` controls the stage or trigger that the end the crop portio
 
 ``max_duration`` controls the maximum duration in days that a crop can be active. Regardless of the ``crop_end_type``, if the maximum duration is reached, the crop will become inactive, although the site simulation may continue.
 
-* For more information on how crops and sites interact, see here <TODO>
+* For more information on how crops and sites interact, see :ref:`sites_and_crops`
 
 Full Example
 ^^^^^^^^^^^^
@@ -105,8 +107,10 @@ After the three parts outlined above, a complete example would look like:
             crop_end_type: death
             max_duration: 365
 
-Template
-^^^^^^^^
+.. _agro_template:
+
+Agromanagement Template
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: text
 
@@ -131,7 +135,7 @@ Template
 .. toctree::
    :maxdepth: 2
    :glob:
-   
+
    command_line
    config_site
    config_crop

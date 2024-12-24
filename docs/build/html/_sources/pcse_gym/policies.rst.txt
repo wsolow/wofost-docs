@@ -1,2 +1,4 @@
+.. _policies:
+
 Prespecified Policies
 =====================

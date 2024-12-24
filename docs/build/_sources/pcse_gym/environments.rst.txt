@@ -1,2 +1,3 @@
+.. _environments:
 Available Environments
 ======================

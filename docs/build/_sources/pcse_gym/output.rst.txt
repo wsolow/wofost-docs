@@ -1,2 +1,4 @@
-Environment Output
-==================
+.. _env_config:
+
+Environment Configuration
+=========================
