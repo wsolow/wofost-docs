@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -288,7 +290,7 @@ the crop simulation.</p>
 </pre></div>
 </div>
 <section id="environment-wrappers">
-<h2>Environment Wrappers<a class="headerlink" href="#environment-wrappers" title="Permalink to this heading">¶</a></h2>
+<span id="wrappers"></span><h2>Environment Wrappers<a class="headerlink" href="#environment-wrappers" title="Permalink to this heading">¶</a></h2>
 <p>There are a few cases in which a <code class="docutils literal notranslate"><span class="pre">Gymnasium.Wrapper</span></code> should be used.</p>
 <p>If using a prespecified policy <a class="reference internal" href="policies.html#policies"><span class="std std-ref">Prespecified Policies</span></a>, the environment should be wrapped in a
 <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictActionWrapper</span></code> and <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictObservationWrapper</span></code>. These two wrappers wrap

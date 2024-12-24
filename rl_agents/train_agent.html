@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -273,6 +275,11 @@ see <a class="reference internal" href="create_agent.html#create-agent"><span cl
 <p>RL Algorithms (Agents) are specified in the <code class="docutils literal notranslate"><span class="pre">rl_algs/</span></code> directory. Each algorithm is self-contained in a <code class="docutils literal notranslate"><span class="pre">&lt;agent&gt;.py</span></code> file.
 Common functions for creating an environment, loading data to a buffer, etc are stored in the <code class="docutils literal notranslate"><span class="pre">rl_algs/rl_utils.py</span></code> file.
 RL Algorithm implementations follow the <a class="reference external" href="https://github.com/vwxyzjn/cleanrl">CleanRL</a> paradigm.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When training a RL Agent, the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> should correspond to the <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code>, otherwise there will be
+crop observation variables missing which the RL Agent cannot handle.</p>
+</div>
 <section id="starting-a-training-run">
 <h2>Starting a Training Run<a class="headerlink" href="#starting-a-training-run" title="Permalink to this heading">¶</a></h2>
 <p>To train a RL Agent, run the following:</p>

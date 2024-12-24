@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -290,6 +292,23 @@ command line argument:</p>
 <li><p>Gym Environment specific arguments are described in <a class="reference internal" href="../pcse_gym/output.html#env-config"><span class="std std-ref">Environment Configuration</span></a></p></li>
 </ul>
 </div>
+<section id="gym-environment-configuration">
+<span id="gym-config"></span><h2>Gym Environment Configuration<a class="headerlink" href="#gym-environment-configuration" title="Permalink to this heading">¶</a></h2>
+<p><strong>WOFOST-Gym</strong> supports a variety of Gymansium environments to handle different types of crop simulations. For the full list of available environments
+see <a class="reference internal" href="../pcse_gym/environments.html#environments"><span class="std std-ref">Available Environments</span></a>.</p>
+<p>Environments can be specified with the command line argument:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test/ --env-id lnw-v0</span>
+</pre></div>
+</div>
+<p>This script will run a simulation as specified by the agromanagement file in a Limited Water setting.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Perennial crops (pears, jujubes) are only compatible with <code class="docutils literal notranslate"><span class="pre">Perennial</span></code> Gym Environments. Likewise,
+grape crops are only compatible with <code class="docutils literal notranslate"><span class="pre">Grape</span></code> environments. Check that the <code class="docutils literal notranslate"><span class="pre">agromanagement</span></code> file
+loaded is compatible with the Gymnasium Environment specified.</p>
+</div>
+<p>The reward function can also be specified by command line. See <a class="reference internal" href="../pcse_gym/env_creation.html#wrappers"><span class="std std-ref">Environment Wrappers</span></a>.</p>
+</section>
 <section id="crop-site-and-agromangement-config">
 <span id="crop-site-agro-command-line"></span><h2>Crop, Site, and Agromangement Config<a class="headerlink" href="#crop-site-and-agromangement-config" title="Permalink to this heading">¶</a></h2>
 <p>While all necessary simulation configuration can be done through the <code class="docutils literal notranslate"><span class="pre">agromanagement</span></code>, <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> YAML files,
@@ -376,6 +395,7 @@ YAML can be passed via a command line argument and will be overridden when runni
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Command Line Arguments</a><ul>
+<li><a class="reference internal" href="#gym-environment-configuration">Gym Environment Configuration</a></li>
 <li><a class="reference internal" href="#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
 </ul>
 </li>

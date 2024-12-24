@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -260,7 +262,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -268,6 +270,78 @@
         <article role="main" id="furo-main-content">
           <section id="prespecified-policies">
 <span id="policies"></span><h1>Prespecified Policies<a class="headerlink" href="#prespecified-policies" title="Permalink to this heading">¶</a></h1>
+<p>Farmers and growers often operate using open-loop policies, or relatively simple closed loop policies subject to the observations avaiable to them.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pcse_gym.policies</span></code> provides a variety of configurable prespecified policies that might be used on a farm.</p>
+<section id="using-a-prespecified-policy">
+<h2>Using a Prespecified Policy<a class="headerlink" href="#using-a-prespecified-policy" title="Permalink to this heading">¶</a></h2>
+<p>Using a prespecified policy in <strong>WOFOST-Gym</strong> usually arises when generating data for comparison with another policy, or on another farm. See
+<a class="reference internal" href="../gen_data.html#data-policies"><span class="std std-ref">Prespecified Policies</span></a> for an example on how to call the policy to generate data.</p>
+<p>Every prespecified policy assumes that the <code class="docutils literal notranslate"><span class="pre">Envirnoment</span></code> is wrapped using a <code class="docutils literal notranslate"><span class="pre">NPKDictActionWrapper</span></code> and <code class="docutils literal notranslate"><span class="pre">NPKDictObservationWrapper</span></code>.
+Using these wrappers makes it much easier to specify a policy, as it makes the actions and observations key-word accessible. A prespecified policy will
+throw an error if the environment is not correctly wrapped.</p>
+<p>Every policy has a <code class="docutils literal notranslate"><span class="pre">__call()</span></code> function which takes in the crop observation. For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">policy</span> <span class="o">=</span> <span class="n">policies</span><span class="o">.</span><span class="n">Below_N</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="c1"># Make Environment</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">NPKDictActionWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">NPKDictObservationWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">action</span> <span class="o">=</span> <span class="n">policy</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will return the action to be taken given the current observation.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Every policy requires that specific observation variables be availble in the <code class="docutils literal notranslate"><span class="pre">obs</span></code> dictionary. If an environment
+does not have these variables, an error will be thrown. For information on configuring environment output, see <a class="reference internal" href="output.html#env-config"><span class="std std-ref">Environment Configuration</span></a>.</p>
+</div>
+</section>
+<section id="creating-a-prespecified-policy">
+<h2>Creating a Prespecified Policy<a class="headerlink" href="#creating-a-prespecified-policy" title="Permalink to this heading">¶</a></h2>
+<p>It is likely that a prespecified policy needs to be created to fit the specific use case.</p>
+<p>Every prespecified policy should have the following header:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Threshold_N</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Policy applying a small amount of Nitrogen at a given interval</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">required_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TOTN&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the :class:`Interval_N`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        env: The Gymnasium Environment</span>
+<span class="sd">        required_vars: list of required state space variables</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">required_vars</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">required_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above policy requires the <code class="docutils literal notranslate"><span class="pre">&quot;TOTN&quot;</span></code> variable as output from the environment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">args</span></code> is usually an instance of <code class="docutils literal notranslate"><span class="pre">gen_data.DataArgs</span></code> which contains variables for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">threshold</span></code> which controls the total amount of fertilizer than can be applied, or the limit below which fertilizer will be applied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">amount</span></code> which controls the amount of fertilizer or water applied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interval</span></code> which controls how often fertilizer or water is applied.</p></li>
+</ul>
+<p>After the header, the <code class="docutils literal notranslate"><span class="pre">_get_action(self,</span> <span class="pre">obs)</span></code> function should be created. For example, suppose we want to apply nitrogen fertilizer as long as a total threshold has not been reached.
+The function to do this would look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns an action that applies Nitrogen until a threshold is met</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">obs</span><span class="p">[</span><span class="s1">&#39;TOTN&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;irrig&#39;</span><span class="p">:</span><span class="mi">0</span> <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;irrig&#39;</span><span class="p">:</span><span class="mi">0</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">TOTN</span></code> observation records the total amount of Nitrogen applied. If it is above some threshold, no Nitrogen will be applied,
+as shown by the <code class="docutils literal notranslate"><span class="pre">{'n':</span> <span class="pre">0,</span> <span class="pre">'p':</span> <span class="pre">0,</span> <span class="pre">'k':</span> <span class="pre">0,</span> <span class="pre">'irrig':0</span> <span class="pre">}</span></code> block.</p>
+<p>Every output of <code class="docutils literal notranslate"><span class="pre">_get_action(obs)</span></code> should be a dictionary with the keys <code class="docutils literal notranslate"><span class="pre">'n'</span></code>, <code class="docutils literal notranslate"><span class="pre">'p'</span></code>, <code class="docutils literal notranslate"><span class="pre">'k'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'irrig'</span></code>
+which give the amount of Nitrogen, Phosphorous, Potassium, and water to be applied.</p>
+<p>The amount of fertilizer or water that is actually applied is controlled by the <code class="docutils literal notranslate"><span class="pre">--npk.fert-amount</span></code> and <code class="docutils literal notranslate"><span class="pre">npk.irrig-amount</span></code> parameters.
+For more information see <a class="reference internal" href="output.html#env-config"><span class="std std-ref">Environment Configuration</span></a>.</p>
+</section>
 </section>
 
         </article>
@@ -313,8 +387,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Prespecified Policies</a><ul>
+<li><a class="reference internal" href="#using-a-prespecified-policy">Using a Prespecified Policy</a></li>
+<li><a class="reference internal" href="#creating-a-prespecified-policy">Creating a Prespecified Policy</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

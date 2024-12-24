@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -281,7 +283,7 @@ An agromanagement file consists of three parts.</p>
 </div>
 </section>
 <section id="sitecalendar">
-<h3>SiteCalendar<a class="headerlink" href="#sitecalendar" title="Permalink to this heading">¶</a></h3>
+<span id="site-calendar"></span><h3>SiteCalendar<a class="headerlink" href="#sitecalendar" title="Permalink to this heading">¶</a></h3>
 <p>After the Agromanagement Heading, there must be a valid <code class="docutils literal notranslate"><span class="pre">SiteCalendar</span></code>, which looks like:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
     SiteCalendar:
@@ -306,6 +308,11 @@ are used to load the historical weather for that <code class="docutils literal n
 <li><p>Example: setting <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">1985-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">1985-12-01</span></code> will result in the same output as setting  <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">2011-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">2011-12-01</span></code></p></li>
 <li><p>This is because on calling <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> the <code class="docutils literal notranslate"><span class="pre">year</span></code> is passed with the start month and day, and the difference between the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code>. While this feels a bit clunky, it makes validation very easy.</p></li>
 </ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>When training a RL Agent, the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> should correspond to the <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code>, otherwise there will be
+crop observation variables missing which the RL Agent cannot handle.</p>
+</div>
 </section>
 <section id="cropcalendar">
 <h3>CropCalendar<a class="headerlink" href="#cropcalendar" title="Permalink to this heading">¶</a></h3>
@@ -383,15 +390,17 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="command_line.html">Command Line Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#gym-environment-configuration">Gym Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="config_site.html">Creating a Site</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config_site.html#site-creation">Site Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_site.html#site-parameters">Site Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="config_crop.html">Creating a Crop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config_crop.html#crop-creation">Crop Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_crop.html#crop-parameters">Crop Parameters</a></li>
 </ul>
 </li>
 </ul>

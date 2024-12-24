@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -224,6 +224,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -260,7 +262,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -268,6 +270,96 @@
         <article role="main" id="furo-main-content">
           <section id="available-environments">
 <span id="environments"></span><h1>Available Environments<a class="headerlink" href="#available-environments" title="Permalink to this heading">¶</a></h1>
+<p>The <strong>WOFOST-Gym</strong> benchmark provides 50+ Gymnasium environments in <code class="docutils literal notranslate"><span class="pre">pcse_gym.envs</span></code>. Every environment inherits from the
+<code class="docutils literal notranslate"><span class="pre">pcse_gym.envs.wofost_base.NPK_Env</span></code>, <code class="docutils literal notranslate"><span class="pre">pcse_gym.envs.wofost_base.Harvest_Env</span></code>, <code class="docutils literal notranslate"><span class="pre">pcse_gym.envs.wofost_base.Plant_Env</span></code>. To see a list of environments and how
+to specify one, see <a class="reference internal" href="#env-list"><span class="std std-ref">Environments List</span></a>.</p>
+<p>Furthermore, environments are subclassed based on whether or not they correspond to growing <code class="docutils literal notranslate"><span class="pre">annual</span></code>, <code class="docutils literal notranslate"><span class="pre">perennial</span></code>, or <code class="docutils literal notranslate"><span class="pre">grape</span></code> crops, given the different
+ways that these crops are handled in the <a class="reference internal" href="../pcse/pcse.html#pcse"><span class="std std-ref">Python Crop Simulation Environment</span></a> simulator.</p>
+<p>Every subclass of environments has six environments which correspond to the following:</p>
+<ul class="simple">
+<li><p>LNPKW: Crop growth subject to limited water, Nitrogen, Potassium, and Phosphorous.</p></li>
+<li><p>LNPK: Crop growth subject to limited Nitrogen, Potassium, and Phosphorous.</p></li>
+<li><p>LN: Crop growth subject to limited Nitrogen.</p></li>
+<li><p>LW: Crop growth subject to limited water.</p></li>
+<li><p>LNW: Crop growth subject to limited Nitrogen and water</p></li>
+<li><p>PP: Crop growth under Potential Production, not limited by any nutrients (this can be helpful as a baseline).</p></li>
+</ul>
+<p>These 6 environments dictate the conditions under which a crop or site can envolve under. For more information, see <a class="reference internal" href="../pcse/dynamics.html#dynamics"><span class="std std-ref">Simulation Dynamics</span></a>.</p>
+<section id="default-environments">
+<h2>Default Environments<a class="headerlink" href="#default-environments" title="Permalink to this heading">¶</a></h2>
+<p>There are three types of environments that a user will generally consider: <code class="docutils literal notranslate"><span class="pre">annual</span></code>, <code class="docutils literal notranslate"><span class="pre">perennial</span></code>, or <code class="docutils literal notranslate"><span class="pre">grape</span></code> environments.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Annual</span></code> environments typically simulate the growth of a single crop. Once this crop is harvested or dies, the crop simulation will end.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Perennial</span></code> environments simulate the growth of a perennial crop which includes the growing phase and dormancy phase across a number of seasons. These environments can simulate the growth of a generic perennial crop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Grape</span></code> environments are very similar to a perennial crop, except that they contain grape specific phenology in the PCSE simulation. These environments can simulate the growth of a woody plant perennail crop (grapes, cherries, etc.) with high fidelity subject to the accuracy of the crop parameters.</p></li>
+</ul>
+</section>
+<section id="planting-and-harvesting-environments">
+<h2>Planting and Harvesting Environments<a class="headerlink" href="#planting-and-harvesting-environments" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">agromanagment.yaml</span></code> file (<a class="reference internal" href="../config/config_agro.html#agro-config"><span class="std std-ref">Configurating a Simulation</span></a>) sets the date of planting for crops. However, in a <code class="docutils literal notranslate"><span class="pre">Plant_Env</span></code>, the planting action
+is part of the action space. These environments are generally <cite>not</cite> compatible with training RL agents, given that the crop observations will not
+be available until the crop is planted. However, they may be of some interest when evaluating the optimal time to plant an annual crop, especially given a
+weather forecast.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Harvest_Env</span></code> allows the date of harvest to be manually set. This can be useful if deciding when to harvest a crop is important, subject to
+crop growth, crop death, or a weather forecast.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">Plant_Env</span></code> and <code class="docutils literal notranslate"><span class="pre">Harvest_Env</span></code>, and their annual and perennial variants, contain the 6 environments corresponding to
+variations on available nutrients. We generally do not use these environments in our experiments, but they may be useful to a user in the future.</p>
+</section>
+<section id="environments-list">
+<span id="env-list"></span><h2>Environments List<a class="headerlink" href="#environments-list" title="Permalink to this heading">¶</a></h2>
+<p>The list of available environments and how to specify them:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Default<span class="w"> </span>Annual<span class="w"> </span>Environments
+<span class="go">--env-id lnpkw-v0</span>
+<span class="go">--env-id pp-v0</span>
+<span class="go">--env-id lnpk-v0</span>
+<span class="go">--env-id ln-v0</span>
+<span class="go">--env-id lnw-v0</span>
+<span class="go">--env-id lw-v0</span>
+<span class="gp"># </span>Single<span class="w"> </span>year<span class="w"> </span>planting<span class="w"> </span>Environments
+<span class="go">--env-id plant-npk-v0</span>
+<span class="go">--env-id plant-pp-v0</span>
+<span class="go">--env-id plant-lnpk-v0</span>
+<span class="go">--env-id plant-ln-v0</span>
+<span class="go">--env-id plant-lnw-v0</span>
+<span class="go">--env-id plant-lw-v0</span>
+<span class="gp"># </span>Single<span class="w"> </span>year<span class="w"> </span>harvesting<span class="w"> </span>environments
+<span class="go">--env-id harvest-npk-v0</span>
+<span class="go">--env-id harvest-pp-v0</span>
+<span class="go">--env-id harvest-lnpk-v0</span>
+<span class="go">--env-id harvest-ln-v0</span>
+<span class="go">--env-id harvest-lnw-v0</span>
+<span class="go">--env-id harvest-lw-v0</span>
+<span class="gp"># </span>Default<span class="w"> </span>perennial<span class="w"> </span>environments
+<span class="go">--env-id perennial-lnpkw-v0</span>
+<span class="go">--env-id perennial-pp-v0</span>
+<span class="go">--env-id perennial-lnpk-v0</span>
+<span class="go">--env-id perennial-ln-v0</span>
+<span class="go">--env-id perennial-lnw-v0</span>
+<span class="go">--env-id perennial-lw-v0</span>
+<span class="gp"># </span>Perennial<span class="w"> </span>planting<span class="w"> </span>Environments
+<span class="go">--env-id perennial-plant-npk-v0</span>
+<span class="go">--env-id perennial-plant-pp-v0</span>
+<span class="go">--env-id perennial-plant-lnpk-v0</span>
+<span class="go">--env-id perennial-plant-ln-v0</span>
+<span class="go">--env-id perennial-plant-lnw-v0</span>
+<span class="go">--env-id perennial-plant-lw-v0</span>
+<span class="gp"># </span>Perennial<span class="w"> </span>harvest<span class="w"> </span>environemnts
+<span class="go">--env-id perennial-harvest-npk-v0</span>
+<span class="go">--env-id perennial-harvest-pp-v0</span>
+<span class="go">--env-id perennial-harvest-lnpk-v0</span>
+<span class="go">--env-id perennial-harvest-ln-v0</span>
+<span class="go">--env-id perennial-harvest-lnw-v0</span>
+<span class="go">--env-id perennial-harvest-lw-v0</span>
+<span class="gp"># </span>Default<span class="w"> </span>Grape<span class="w"> </span>environments
+<span class="go">--env-id grape-lnpkw-v0</span>
+<span class="go">--env-id grape-pp-v0</span>
+<span class="go">--env-id grape-lnpk-v0</span>
+<span class="go">--env-id grape-ln-v0</span>
+<span class="go">--env-id grape-lnw-v0</span>
+<span class="go">--env-id grape-lw-v0</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -313,8 +405,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Available Environments</a><ul>
+<li><a class="reference internal" href="#default-environments">Default Environments</a></li>
+<li><a class="reference internal" href="#planting-and-harvesting-environments">Planting and Harvesting Environments</a></li>
+<li><a class="reference internal" href="#environments-list">Environments List</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

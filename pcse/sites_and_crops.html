@@ -224,6 +224,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -268,6 +270,15 @@
         <article role="main" id="furo-main-content">
           <section id="sites-and-crops">
 <span id="id1"></span><h1>Sites and Crops<a class="headerlink" href="#sites-and-crops" title="Permalink to this heading">¶</a></h1>
+<p>Every PCSE simulation contains a <code class="docutils literal notranslate"><span class="pre">site</span></code> and a <code class="docutils literal notranslate"><span class="pre">crop</span></code>. The site is always active, while the
+crop can sometimes be inactivate. Importantly, a crop cannot exist without an active site.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">site</span></code> stores all the information about the soil including nutrient and water levels.
+These levels flucuate over time subject to user input (fertilization and irrigation), weather (rainfall, runoff),
+and background processes.</p>
+<p>Meanwhile, the <code class="docutils literal notranslate"><span class="pre">crop</span></code> stores all information about the current state of the crop. The crop evolves
+subject to the weather (Temperature and Day Length) and the available minerals in the soil.</p>
+<p>For a full list of output variables, see <a class="reference internal" href="output_vars.html#pcse-output"><span class="std std-ref">PCSE Output</span></a>. For a full list of parameters, see
+<a class="reference internal" href="../config/config_crop.html#crop-config"><span class="std std-ref">Creating a Crop</span></a> and <a class="reference internal" href="../config/config_site.html#site-config"><span class="std std-ref">Creating a Site</span></a>.</p>
 </section>
 
         </article>
