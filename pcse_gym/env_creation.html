@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -260,7 +260,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -268,6 +268,70 @@
         <article role="main" id="furo-main-content">
           <section id="environment-creation">
 <span id="env-creation"></span><h1>Environment Creation<a class="headerlink" href="#environment-creation" title="Permalink to this heading">¶</a></h1>
+<p>PCSE Gym environments are specified using the <code class="docutils literal notranslate"><span class="pre">utils.Args</span></code> dataclass and calling the <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env(args)</span></code> function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env(args)</span></code> function makes the Gym environment and saves and/or loads the correct <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file that specifies
+the crop simulation.</p>
+<p>For information on environment configuration, see <a class="reference internal" href="output.html#env-config"><span class="std std-ref">Environment Configuration</span></a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We do <strong>not</strong> recommend calling</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gymnasium</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">env</span><span class="o">-</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>directly, as <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env(args)</span></code> also handles correctly passing arguments to the <code class="docutils literal notranslate"><span class="pre">gymnasium.make</span></code> function.</p>
+</div>
+<p>As an example, a default environment can be created with the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">Args</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="environment-wrappers">
+<h2>Environment Wrappers<a class="headerlink" href="#environment-wrappers" title="Permalink to this heading">¶</a></h2>
+<p>There are a few cases in which a <code class="docutils literal notranslate"><span class="pre">Gymnasium.Wrapper</span></code> should be used.</p>
+<p>If using a prespecified policy <a class="reference internal" href="policies.html#policies"><span class="std std-ref">Prespecified Policies</span></a>, the environment should be wrapped in a
+<code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictActionWrapper</span></code> and <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictObservationWrapper</span></code>. These two wrappers wrap
+the environment actions and observations as dictionaries to interface with the <code class="docutils literal notranslate"><span class="pre">Policy</span></code> class in <code class="docutils literal notranslate"><span class="pre">pcse_gym.policies</span></code> which makes
+policy specification easy.</p>
+<p>To wrap the environment in these wrappers, do the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">Args</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pcse_gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">NPKDictActionWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pcse_gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">NPKDictObservationWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>When using a trained RL Agent policy, ensure that the environment is <strong>not</strong> wrapped in <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictActionWrapper</span></code> or <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NPKDictObservationWrapper</span></code>,
+as this will make the agent unable to execute a policy.</p>
+</div>
+<p>Additionally, the user may want to specify different reward functions (e.g. to penalize fertilizer runoff or set irrigation limits) and then train a RL agent with this reward function.
+To do so, the environment should be instantiated as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">Args</span><span class="p">)</span>
+
+<span class="c1"># Make the gym environment with wrappers</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pcse_gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">NPKDictActionWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">pcse_gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">NPKDictObservationWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wrap_env_reward</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And, the reward wrapper should be specified in the command line argument or config.yaml file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --env-reward RewardFertilizationThresholdWrapper</span>
+</pre></div>
+</div>
+<p>For examples on how to create a <code class="docutils literal notranslate"><span class="pre">RewardWrapper</span></code> see <a class="reference internal" href="rewards.html#rewards"><span class="std std-ref">Reward Wrappers</span></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Always call <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">=</span> <span class="pre">utils.wrap_env_reward(env,</span> <span class="pre">args)</span></code> after any calls to other <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers</span></code> as <code class="docutils literal notranslate"><span class="pre">RewardWrappers</span></code> overwrite the
+step function, creating the desired reward.</p>
+</div>
+</section>
 </section>
 
         </article>
@@ -313,8 +377,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Environment Creation</a><ul>
+<li><a class="reference internal" href="#environment-wrappers">Environment Wrappers</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
