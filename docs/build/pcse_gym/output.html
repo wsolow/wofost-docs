@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -208,10 +208,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse_gym.html">PCSE Gym</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse_gym.html">PCSE Gym</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="env_creation.html">Environment Creation</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environments.html">Available Environments</a></li>
@@ -219,7 +221,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 </ul>
@@ -258,7 +260,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -266,6 +268,37 @@
         <article role="main" id="furo-main-content">
           <section id="environment-configuration">
 <span id="env-config"></span><h1>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading">¶</a></h1>
+<p>Here, we detail the most important parts of the environment configuration.</p>
+<section id="environment-output">
+<h2>Environment Output<a class="headerlink" href="#environment-output" title="Link to this heading">¶</a></h2>
+<p>The environment output is controlled by the <code class="docutils literal notranslate"><span class="pre">--npk.output-vars</span></code> and <code class="docutils literal notranslate"><span class="pre">--npk.weather-vars</span></code> parameters
+in the <code class="docutils literal notranslate"><span class="pre">pcse_gym.args.NPK_Args</span></code> dataclass. This dataclass is present in the <code class="docutils literal notranslate"><span class="pre">utils.Args</span></code> class which is passed
+to all scripts that generate data or train agents.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variables correspond to the site and crop variables output by the simulation at each time step. Meanwhile, the
+<code class="docutils literal notranslate"><span class="pre">weather</span></code> variables correspond to the daily weather from the specified location and year for the given day. A full list of
+output and weather variables can be found at <a class="reference internal" href="../pcse/output_vars.html#pcse-output"><span class="std std-ref">PCSE Output</span></a>.</p>
+<p>The default output and weather variables are specified as:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Output Variables&quot;&quot;&quot;</span>
+<span class="n">output_vars</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FIN&#39;</span><span class="p">,</span> <span class="s1">&#39;DVS&#39;</span><span class="p">,</span> <span class="s1">&#39;WSO&#39;</span><span class="p">,</span> <span class="s1">&#39;NAVAIL&#39;</span><span class="p">,</span> <span class="s1">&#39;PAVAIL&#39;</span><span class="p">,</span> <span class="s1">&#39;KAVAIL&#39;</span><span class="p">,</span> <span class="s1">&#39;SM&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTN&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTP&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTK&#39;</span><span class="p">,</span> <span class="s1">&#39;TOTIRRIG&#39;</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;Weather Variables&quot;&quot;&quot;</span>
+<span class="n">weather_vars</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IRRAD&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;RAIN&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This configuration will make the state space of the gym environment a tuple of length <code class="docutils literal notranslate"><span class="pre">(15,)</span></code> (a default parameter <code class="docutils literal notranslate"><span class="pre">DAYS</span></code>, for the days elapsed, is automatically added).
+The output is in order of specification, although wrapping the environment with a <code class="docutils literal notranslate"><span class="pre">NPKDictObservationWrapper</span></code> will make the variables keyword accessible (This is not compatible with training RL Agents).</p>
+<p>Passing lists through command lines is difficult. Thus, we recommend changing the parameters in the <code class="docutils literal notranslate"><span class="pre">NPK_Args</span></code> dataclass, or passing a configuration
+file. See <a class="reference internal" href="../config/command_line.html#command-line"><span class="std std-ref">Command Line Arguments</span></a>.</p>
+</section>
+<section id="other-variables">
+<h2>Other Variables<a class="headerlink" href="#other-variables" title="Link to this heading">¶</a></h2>
+<p>Other variables configure the PCSE crop simulation, which can be passed via command line as <code class="docutils literal notranslate"><span class="pre">--npk.&lt;variable&gt;</span></code> or through a <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.</p>
+<p>These are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">intvn_interval</span></code>: How often an action can be taken (1 = 1 day, 7 = 1 week, etc.). For longer intervals, the outputted weather will expand to store the last <cite>intvn_interval</cite> days of weather.</p>
+<p><code class="docutils literal notranslate"><span class="pre">forecast_length</span></code>: It may be useful to train an agent given a weather forecast. <code class="docutils literal notranslate"><span class="pre">forecast_length=1</span></code> gives the weather today, <code class="docutils literal notranslate"><span class="pre">forecast_length=7</span></code> gives the current weather and the next 6 days.
+<code class="docutils literal notranslate"><span class="pre">forecast_noise</span></code>: Forecasts are rarely accurate and decrease in accuracy over longer periods. <code class="docutils literal notranslate"><span class="pre">forecast_noise</span></code> introduces Gaussian noise to the true weather data as the forecast length increases.</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_fert</span></code> and <code class="docutils literal notranslate"><span class="pre">num_irrig</span></code>: Specify the number of fertilization and irrigation actions availble.</p>
+<p><code class="docutils literal notranslate"><span class="pre">random_reset</span></code>: Resets the environment to draw weather from a random year. Useful for training RL Agents (essentially domain randomization).</p>
+</section>
 </section>
 
         </article>
@@ -311,8 +344,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Environment Configuration</a><ul>
+<li><a class="reference internal" href="#environment-output">Environment Output</a></li>
+<li><a class="reference internal" href="#other-variables">Other Variables</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

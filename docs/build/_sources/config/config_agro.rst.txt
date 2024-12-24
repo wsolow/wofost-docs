@@ -17,6 +17,8 @@ Every agromanagement file must start with the heading ``Agromanagement:``
 
     Agromanagement:
 
+.. _site_calendar: 
+
 SiteCalendar
 ^^^^^^^^^^^^
 After the Agromanagement Heading, there must be a valid ``SiteCalendar``, which looks like:
@@ -47,6 +49,12 @@ Check that the ``site_variation`` appears under the ``Variations`` header in the
 * Example: setting ``site_start_date: 1985-01-01`` and ``site_end_date: 1985-12-01`` will result in the same output as setting  ``site_start_date: 2011-01-01`` and ``site_end_date: 2011-12-01``
 
 * This is because on calling ``env.reset()`` the ``year`` is passed with the start month and day, and the difference between the ``site_start_date`` and ``site_end_date``. While this feels a bit clunky, it makes validation very easy.
+
+.. caution::
+
+    When training a RL Agent, the ``site_start_date`` and ``site_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
+    crop observation variables missing which the RL Agent cannot handle.
+
 
 CropCalendar
 ^^^^^^^^^^^^

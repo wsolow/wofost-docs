@@ -10,6 +10,11 @@ RL Algorithms (Agents) are specified in the ``rl_algs/`` directory. Each algorit
 Common functions for creating an environment, loading data to a buffer, etc are stored in the ``rl_algs/rl_utils.py`` file. 
 RL Algorithm implementations follow the `CleanRL <https://github.com/vwxyzjn/cleanrl>`_ paradigm. 
 
+.. important::
+
+    When training a RL Agent, the ``site_start_date`` and ``site_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
+    crop observation variables missing which the RL Agent cannot handle.
+
 Starting a Training Run
 -----------------------
 

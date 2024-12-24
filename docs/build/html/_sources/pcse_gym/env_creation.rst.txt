@@ -29,6 +29,8 @@ As an example, a default environment can be created with the following:
     args = tyro.cli(utils.Args)
     env = utils.make_gym_env(args)
 
+.. _wrappers:
+
 Environment Wrappers
 --------------------
 

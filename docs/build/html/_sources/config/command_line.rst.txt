@@ -30,6 +30,31 @@ This will load the configuration at ``/test/config.yaml``, modify the Agromanage
     * Data generation specific arguments are described in :ref:`gen_data`
     * Gym Environment specific arguments are described in :ref:`env_config`
 
+
+.. _gym_config:
+
+Gym Environment Configuration
+-----------------------------
+
+**WOFOST-Gym** supports a variety of Gymansium environments to handle different types of crop simulations. For the full list of available environments
+see :ref:`environments`. 
+
+Environments can be specified with the command line argument:
+
+.. code-block:: console
+    
+    python3 test_wofost.py --save-folder test/ --env-id lnw-v0
+
+This script will run a simulation as specified by the agromanagement file in a Limited Water setting. 
+
+.. caution::
+
+    Perennial crops (pears, jujubes) are only compatible with ``Perennial`` Gym Environments. Likewise, 
+    grape crops are only compatible with ``Grape`` environments. Check that the ``agromanagement`` file 
+    loaded is compatible with the Gymnasium Environment specified. 
+
+The reward function can also be specified by command line. See :ref:`wrappers`.
+
 .. _crop_site_agro_command_line: 
 
 Crop, Site, and Agromangement Config

@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -260,7 +260,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -268,6 +268,96 @@
         <article role="main" id="furo-main-content">
           <section id="reward-wrappers">
 <span id="rewards"></span><h1>Reward Wrappers<a class="headerlink" href="#reward-wrappers" title="Link to this heading">¶</a></h1>
+<p>While the <code class="docutils literal notranslate"><span class="pre">pcse_gym/</span></code> Gymnasium module natively supports a few Reward Wrappers, it is may be desirable
+to create a different reward to train a RL agent on, given different values when growing a crop (reduced water use, reduced fertilizer runoff, etc.)</p>
+<section id="base-class">
+<h2>Base Class<a class="headerlink" href="#base-class" title="Link to this heading">¶</a></h2>
+<p>The abstract <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.RewardWrapper</span></code> base class inherits the <code class="docutils literal notranslate"><span class="pre">gymnasium.Wrapper</span></code> class.
+It has two functions <code class="docutils literal notranslate"><span class="pre">_validate()</span></code> which enforces correct environment wrapping order, and the
+<code class="docutils literal notranslate"><span class="pre">reset()</span></code> function which correctly passes the keyword arguments to the base environment</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Always call the <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env()</span></code> function to make an environment before
+wrapping with a <code class="docutils literal notranslate"><span class="pre">RewardWrapper</span></code>. Otherwise, the environment will be wrapped with a
+<code class="docutils literal notranslate"><span class="pre">gymnasium.Wrapper.OrderEnforcing</span></code> wrapper which does not pass keyword arguments in <code class="docutils literal notranslate"><span class="pre">reset()</span></code>.
+See <a class="reference internal" href="env_creation.html#env-creation"><span class="std std-ref">Environment Creation</span></a>.</p>
+</div>
+</section>
+<section id="creating-a-reward-wrapper">
+<h2>Creating a Reward Wrapper<a class="headerlink" href="#creating-a-reward-wrapper" title="Link to this heading">¶</a></h2>
+<p>To create a reward wrapper, inherit the <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.RewardWrapper</span></code> class. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
+function should have the following header:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RewardFertilizationThresholdWrapper</span><span class="p">(</span><span class="n">RewardWrapper</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Modifies the reward to be a function with high penalties for if a</span>
+<span class="sd">threshold is crossed during fertilization or irrigation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the :class:`RewardFertilizationThresholdWrapper` wrapper with an environment.&quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
+</pre></div>
+</div>
+<p>Any required arguments should be passed by the <code class="docutils literal notranslate"><span class="pre">Args</span></code> dataclass (specified in <code class="docutils literal notranslate"><span class="pre">utils.py</span></code>).</p>
+<section id="changing-the-reward">
+<h3>Changing the Reward<a class="headerlink" href="#changing-the-reward" title="Link to this heading">¶</a></h3>
+<p>The reward function generally depends on the output of the simulation and the action taken. Upon taking an action, an <code class="docutils literal notranslate"><span class="pre">action_tuple</span></code> is returned
+from the <code class="docutils literal notranslate"><span class="pre">_take_action()</span></code> function which specifies how much water, Nitrogen, Phosphorous, or Potassium was applied to the crop.</p>
+<p>From this action tuple and the output of the crop simulation, the reward can be updated.</p>
+<p>See the example below which penalizes the application of any fertilizer or water, while rewarding the total growth of the crop, <code class="docutils literal notranslate"><span class="pre">WSO</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">act_tuple</span><span class="p">:</span><span class="nb">tuple</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Gets the reward as a penalty based on the amount of NPK/Water applied</span>
+
+<span class="sd">Args:</span>
+<span class="sd">    output: dict     - output from model</span>
+<span class="sd">    act_tuple: tuple -  NPK/Water amounts&quot;&quot;&quot;</span>
+
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;WSO&#39;</span><span class="p">]</span> <span class="o">-</span> \
+                    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cost</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">act_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">:]])))</span>
+<span class="k">return</span> <span class="n">reward</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When using a <code class="docutils literal notranslate"><span class="pre">pcse_gym.RewardWrapper</span></code>, the output of the crop simulation must contain the output variables needed to compute the
+new reward. For information on configuring simulation output, see <a class="reference internal" href="output.html#env-config"><span class="std std-ref">Environment Configuration</span></a>.</p>
+</div>
+</section>
+<section id="the-step-function">
+<h3>The Step Function<a class="headerlink" href="#the-step-function" title="Link to this heading">¶</a></h3>
+<p>Often, the step function needs to be overridden with <code class="docutils literal notranslate"><span class="pre">env.unwrapped</span></code> calls to ensure compatibility with a variety of wrappers,
+especially if the environment was previously wrapped with <code class="docutils literal notranslate"><span class="pre">NPKDictObservationWrapper</span></code> or <code class="docutils literal notranslate"><span class="pre">NPKDictActionWrapper</span></code>.</p>
+<p>To ensure compatibility, copy the <code class="docutils literal notranslate"><span class="pre">step</span></code> function from <code class="docutils literal notranslate"><span class="pre">pcse_gym.wofost_base.NPK_Env</span></code> to
+the <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NewRewardWrapper</span></code> class. Below is the template, which does not need modifications:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run one timestep of the environment&#39;s dynamics.</span>
+
+<span class="sd">    Sends action to the WOFOST model and recieves the resulting observation</span>
+<span class="sd">    which is then processed to the _get_reward() function and _process_output()</span>
+<span class="sd">    function for a reward and observation</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        action: integer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Send action signal to model and run model</span>
+    <span class="n">act_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">_run_simulation</span><span class="p">()</span>
+
+    <span class="n">observation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">_process_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+    <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_reward</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">act_tuple</span><span class="p">)</span>
+
+    <span class="c1"># Terminate based on crop finishing</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;FIN&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="c1"># Truncate based on site end date</span>
+    <span class="n">truncation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">site_end_date</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;WSO&#39;</span><span class="p">],</span> <span class="n">act_tuple</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">termination</span><span class="p">,</span> <span class="n">truncation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
         </article>
@@ -313,8 +403,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Reward Wrappers</a><ul>
+<li><a class="reference internal" href="#base-class">Base Class</a></li>
+<li><a class="reference internal" href="#creating-a-reward-wrapper">Creating a Reward Wrapper</a><ul>
+<li><a class="reference internal" href="#changing-the-reward">Changing the Reward</a></li>
+<li><a class="reference internal" href="#the-step-function">The Step Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

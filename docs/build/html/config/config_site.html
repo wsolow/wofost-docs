@@ -208,10 +208,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
@@ -219,9 +221,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -268,8 +272,99 @@
 <span id="site-config"></span><h1>Creating a Site<a class="headerlink" href="#creating-a-site" title="Link to this heading">¶</a></h1>
 <section id="site-creation">
 <h2>Site Creation<a class="headerlink" href="#site-creation" title="Link to this heading">¶</a></h2>
+<p>Every site has a predefined set of parameters that need to be included that define the soil dynamics. See the table
+below for information on these parameters. For the blank template to make a site, see <a class="reference internal" href="#site-template"><span class="std std-ref">Site Template</span></a>.</p>
+</section>
+<section id="site-parameters">
+<h2>Site Parameters<a class="headerlink" href="#site-parameters" title="Link to this heading">¶</a></h2>
+<section id="npk-soil-parameters">
+<h3>NPK Soil Parameters<a class="headerlink" href="#npk-soil-parameters" title="Link to this heading">¶</a></h3>
+<p>+======================+========================================================+========+=============================+
+| Name                 | Description                                            | Type   | Unit                        |
++======================+========================================================+========+=============================+
+| NSOILBASE            | Base soil supply of N available through mineralisation | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| NSOILBASE_FR         | Fraction of base soil N that comes available every day | SSi    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| PSOILBASE            | Base soil supply of P available through mineralisation | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| PSOILBASE_FR         | Fraction of base soil P that comes available every day | SSi    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| KSOILBASE            | Base soil supply of K available through mineralisation | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| KSOILBASE_FR         | Fraction of base soil K that comes available every day| SSi     | -                           |
++———————-+——————————————————–+——–+—————————–+
+| NAVAILI              | Initial N available in the N pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| PAVAILI              | Initial P available in the P pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| KAVAILI              | Initial K available in the K pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| NMAX                 | Maximum N available in the N pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| PMAX                 | Maximum P available in the N pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| KMAX                 | Maximum K available in the N pool                      | SSi    |  kg ha-1                    |
++———————-+——————————————————–+——–+—————————–+
+| BG_N_SUPPLY          | Background supply of N through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| BG_P_SUPPLY          | Background supply of P through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| BG_K_SUPPLY          | Background supply of K through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RNSOILMAX            | Maximum rate of surface N to subsoil                   | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RPSOILMAX            | Maximum rate of surface P to subsoil                   | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RKSOILMAX            | Maximum rate of surface K to subsoil                   | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RNABSORPTION         | Relative rate of N absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RPABSORPTION         | Relative rate of P absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RKABSORPTION         | Relative rate of K absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
++———————-+——————————————————–+——–+—————————–+
+| RNPKRUNOFF           | Relative rate of NPK runoff as a function of surface   | SSi    | -                           |
+|                      | water runoff                                           |        |                             |
++======================+========================================================+========+=============================+</p>
+</section>
+<section id="soil-dynamics-parameters">
+<h3>Soil Dynamics Parameters<a class="headerlink" href="#soil-dynamics-parameters" title="Link to this heading">¶</a></h3>
+<p>+======================+========================================================+========+=============================+
+| Name                 | Description                                            | Type   | Unit                        |
++======================+========================================================+========+=============================+
+| SMFCF                | Field capacity of the soil                             | SSo    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| SM0                  | Porosity of the soil                                   | SSo    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| SMW                  | Wilting point of the soil                              | SSo    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| CRAIRC               | Soil critical air content (waterlogging)               | SSo    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| SOPE                 | Maximum percolation rate root zone                     | SSo    |  cm day-1                   |
++———————-+——————————————————–+——–+—————————–+
+| KSUB                 | Maximum percolation rate subsoil                       | SSo    |  cm day-1                   |
++———————-+——————————————————–+——–+—————————–+
+| RDMSOL               | Soil rootable depth                                    | SSo    |  cm                         |
++———————-+——————————————————–+——–+—————————–+
+| IFUNRN               | Indicates whether non-infiltrating fraction of rain is | SSi    | -                           |
+|                      | a function of storm size (1) or not (0)                |        |                             |
++———————-+——————————————————–+——–+—————————–+
+| SSMAX                | Maximum surface storage                                | SSi    |  cm                         |
++———————-+——————————————————–+——–+—————————–+
+| SSI                  | Initial surface storage                                | SSi    |  cm                         |
++———————-+——————————————————–+——–+—————————–+
+| WAV                  | Initial amount of water in total soil profile          | SSi    |  cm                         |
++———————-+——————————————————–+——–+—————————–+
+| NOTINF               | Maximum fraction of rain not-infiltrating into the soil| SSi    | -                           |
++———————-+——————————————————–+——–+—————————–+
+| SMLIM                | Initial maximum moisture content in initial rooting    | SSi    | -                           |
+|                      | depth zone                                             |        |                             |
++———————-+——————————————————–+——–+—————————–+</p>
+</section>
 <section id="site-template">
 <span id="id1"></span><h3>Site Template<a class="headerlink" href="#site-template" title="Link to this heading">¶</a></h3>
+<p>Download the site template YAML file here: <a class="reference download internal" download="" href="../_downloads/8183394686061ad269fd9ff3552f885b/site_template.yaml"><code class="xref download docutils literal notranslate"><span class="pre">site_template.yaml</span></code></a></p>
 </section>
 </section>
 </section>
@@ -330,7 +425,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Creating a Site</a><ul>
-<li><a class="reference internal" href="#site-creation">Site Creation</a><ul>
+<li><a class="reference internal" href="#site-creation">Site Creation</a></li>
+<li><a class="reference internal" href="#site-parameters">Site Parameters</a><ul>
+<li><a class="reference internal" href="#npk-soil-parameters">NPK Soil Parameters</a></li>
+<li><a class="reference internal" href="#soil-dynamics-parameters">Soil Dynamics Parameters</a></li>
 <li><a class="reference internal" href="#site-template">Site Template</a></li>
 </ul>
 </li>

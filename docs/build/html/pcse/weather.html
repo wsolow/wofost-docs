@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Sites and Crops" href="sites_and_crops.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Simulation Dynamics" href="dynamics.html" /><link rel="prev" title="Sites and Crops" href="sites_and_crops.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>Weather - WOFOST-Gym 1.0.0 documentation</title>
@@ -208,20 +208,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -265,7 +269,20 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="weather">
-<h1>Weather<a class="headerlink" href="#weather" title="Link to this heading">¶</a></h1>
+<span id="id1"></span><h1>Weather<a class="headerlink" href="#weather" title="Link to this heading">¶</a></h1>
+<p>The weather in PCSE is generally historical data provided by the <a class="reference external" href="https://github.com/kdmayer/nasa-power-api">NASA Power</a> API.
+This weather module has data from 1984 to 2023 with most latitudes and longitudes available. For configuring
+the weather to be used in a crop simulation, see <a class="reference internal" href="../config/config_agro.html#site-calendar"><span class="std std-ref">SiteCalendar</span></a>.</p>
+<p>As the simulation processes, the <code class="docutils literal notranslate"><span class="pre">pcse.NASAPowerWeatherProvider</span></code> module will continue to draw
+daily weather until the simulation terminates.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Starting a simulation with the year <code class="docutils literal notranslate"><span class="pre">2023</span></code> and running the simulation for 2 years may
+result in an error, as the <a href="#id2"><span class="problematic" id="id3">``</span></a>pcse.NASAPowerWeatherProvider``can no longer continue to draw weather.</p>
+</div>
+<p>In multi-year perennial simulations, the weather for a given year is generally drawn randomly from years in the range
+<code class="docutils literal notranslate"><span class="pre">[1984,</span> <span class="pre">2023]</span></code>. This behavior simulates a different weather for each year, and ensures that the simulation never runs outlined
+of daily weather to draw from. If this is not desired behavior, it can be overridden in <code class="docutils literal notranslate"><span class="pre">pcse_gym.envs.wofost_base.NPK_Env</span></code>.</p>
 </section>
 
         </article>
@@ -273,7 +290,15 @@
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="dynamics.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Simulation Dynamics</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="sites_and_crops.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">

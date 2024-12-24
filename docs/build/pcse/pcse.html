@@ -224,6 +224,8 @@
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html">PCSE Output</a></li>
 </ul>
 </li>
 </ul>
@@ -268,10 +270,37 @@
         <article role="main" id="furo-main-content">
           <section id="python-crop-simulation-environment">
 <span id="pcse"></span><h1>Python Crop Simulation Environment<a class="headerlink" href="#python-crop-simulation-environment" title="Link to this heading">¶</a></h1>
+<p>The Python Crop Simulation Environment (PCSE) is what underlies the <strong>WOFOST-Gym</strong> simulation. For the full documentation,
+see <a class="reference external" href="https://pcse.readthedocs.io/en/stable/">PCSE Docs</a>. <strong>WOFOST-Gym</strong> modifies the PCSE environment substantially to support
+the desired uses for training RL Agents and easy environment configuration. However, the original documentation may be useful to
+clarify some points.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">pcse_gym.env</span></code> Gymnasium environment calls a <code class="docutils literal notranslate"><span class="pre">PCSE.Engine</span></code> file, passing the specified parameters (<a class="reference internal" href="../config/config_agro.html#agro-config"><span class="std std-ref">Configurating a Simulation</span></a>).
+The <code class="docutils literal notranslate"><span class="pre">env.step()</span></code> function then runs the simulation subject to the daily weather and actions specified. For more information on the
+<code class="docutils literal notranslate"><span class="pre">PCSE.Engine</span></code>, see <a class="reference external" href="https://pcse.readthedocs.io/en/stable/reference_guide.html#the-engine">PCSE Engine</a>. Different engines in
+<code class="docutils literal notranslate"><span class="pre">wofost-gym.pcse.engine</span></code> support annual and perennial crop growth.</p>
+<p>Follow along in the pages below which highlight the important changes that have been made.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weather.html">Weather</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_vars.html">PCSE Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#wofost-states-and-rate">WOFOST States and Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#evaporation-states-and-rates">Evaporation States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#leaf-dynamics-states-and-rates">Leaf Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#npk-dynamics-states-and-rates">NPK Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#partitioning-states-and-rates">Partitioning States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#vernalization-states-and-rates">Vernalization States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#phenology-states-and-rates">Phenology States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#respiration-dynamics-states-and-rates">Respiration Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#root-dynamics-states-and-rates">Root Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#stem-dynamics-states-and-rates">Stem Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#storage-organs-dynamics-states-and-rates">Storage Organs Dynamics States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#npk-demand-uptake-states-and-rates">NPK Demand Uptake States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#npk-stress-states-and-rates">NPK Stress States and Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_vars.html#id2">NPK Dynamics States and Rates</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
