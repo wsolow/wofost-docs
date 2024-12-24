@@ -35,8 +35,7 @@ To cite this work, please cite the research paper as follows:
    installation
    config/config_agro
    gen_data
-   train_agent
-   create_agent
+   rl_agents/train_agent
    viz_data
    pcse_gym/pcse_gym
    pcse/pcse

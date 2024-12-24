@@ -1,3 +1,5 @@
+.. _pcse_gym:
+
 PCSE Gym
 ========
 
@@ -6,6 +8,7 @@ PCSE Gym
    :maxdepth: 2
    :glob:
    
+   env_creation
    output
    environments
    policies

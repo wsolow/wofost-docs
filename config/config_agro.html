@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Command Line Configuration" href="command_line.html" /><link rel="prev" title="Getting Started" href="../installation.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Command Line Arguments" href="command_line.html" /><link rel="prev" title="Getting Started" href="../installation.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Configurating a Simulation - WOFOST-Gym 1.0.0 documentation</title>
@@ -202,23 +202,26 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 </ul>
@@ -264,7 +267,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="configurating-a-simulation">
-<h1>Configurating a Simulation<a class="headerlink" href="#configurating-a-simulation" title="Permalink to this heading">¶</a></h1>
+<span id="agro-config"></span><h1>Configurating a Simulation<a class="headerlink" href="#configurating-a-simulation" title="Permalink to this heading">¶</a></h1>
 <section id="agromanagement">
 <h2>Agromanagement<a class="headerlink" href="#agromanagement" title="Permalink to this heading">¶</a></h2>
 <p>The agromanagent files in <code class="docutils literal notranslate"><span class="pre">/env_config/agro</span></code> controls the underlying crop simulation in <code class="docutils literal notranslate"><span class="pre">/pcse/</span></code> by
@@ -297,7 +300,7 @@ are used to load the historical weather for that <code class="docutils literal n
 <li><p>NOTE: the <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> can be overridden in the <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> function or with the <code class="docutils literal notranslate"><span class="pre">--npk-args.random-reset</span></code> flag.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">site_name</span></code> and <code class="docutils literal notranslate"><span class="pre">site_variation</span></code> read the parameters from the <code class="docutils literal notranslate"><span class="pre">env_config/site/site_name.yaml</span></code> given the <code class="docutils literal notranslate"><span class="pre">site_variation</span></code>.</p>
-<p>Check that the <code class="docutils literal notranslate"><span class="pre">site_variation</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Variations</span></code> header in the <code class="docutils literal notranslate"><span class="pre">site_name.yaml</span></code> file. For more information on site configuration. See here &lt;TODO&gt;.</p>
+<p>Check that the <code class="docutils literal notranslate"><span class="pre">site_variation</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Variations</span></code> header in the <code class="docutils literal notranslate"><span class="pre">site_name.yaml</span></code> file. See <a class="reference internal" href="config_site.html#site-config"><span class="std std-ref">Creating a Site</span></a></p>
 <p><code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.</p>
 <ul class="simple">
 <li><p>Example: setting <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">1985-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">1985-12-01</span></code> will result in the same output as setting  <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">2011-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">2011-12-01</span></code></p></li>
@@ -318,7 +321,7 @@ are used to load the historical weather for that <code class="docutils literal n
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">crop_name</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code> read the parameters from the <code class="docutils literal notranslate"><span class="pre">env_config/crop/crop_name.yaml</span></code> given the <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code>.</p>
-<p>Check that the <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Varieties</span></code> header in the <code class="docutils literal notranslate"><span class="pre">crop_name.yaml</span></code> file. For more information on site configuration. See here &lt;TODO&gt;.</p>
+<p>Check that the <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Varieties</span></code> header in the <code class="docutils literal notranslate"><span class="pre">crop_name.yaml</span></code> file. See <a class="reference internal" href="config_crop.html#crop-config"><span class="std std-ref">Creating a Crop</span></a></p>
 <p><code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> set the dates that the crop starts and the maximum length of the crop. The <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> must come after the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> as a
 crop cannot be present without an active site, and the <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> must happen before the <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> as there cannot be an active crop without an active site.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">crop_start_type</span></code> dictates the crop stage that the crop starts in.
@@ -330,7 +333,7 @@ crop cannot be present without an active site, and the <code class="docutils lit
 * For grape specific simulations, valid end types are: <code class="docutils literal notranslate"><span class="pre">endodorm</span></code>, <code class="docutils literal notranslate"><span class="pre">ecodorm</span></code>, <code class="docutils literal notranslate"><span class="pre">budbreak</span></code>, <code class="docutils literal notranslate"><span class="pre">verasion</span></code>, <code class="docutils literal notranslate"><span class="pre">ripe</span></code>, <code class="docutils literal notranslate"><span class="pre">max_duration</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">max_duration</span></code> controls the maximum duration in days that a crop can be active. Regardless of the <code class="docutils literal notranslate"><span class="pre">crop_end_type</span></code>, if the maximum duration is reached, the crop will become inactive, although the site simulation may continue.</p>
 <ul class="simple">
-<li><p>For more information on how crops and sites interact, see here &lt;TODO&gt;</p></li>
+<li><p>For more information on how crops and sites interact, see <a class="reference internal" href="../pcse/sites_and_crops.html#sites-and-crops"><span class="std std-ref">Sites and Crops</span></a></p></li>
 </ul>
 </section>
 <section id="full-example">
@@ -356,8 +359,8 @@ crop cannot be present without an active site, and the <code class="docutils lit
 </pre></div>
 </div>
 </section>
-<section id="template">
-<h3>Template<a class="headerlink" href="#template" title="Permalink to this heading">¶</a></h3>
+<section id="agromanagement-template">
+<span id="agro-template"></span><h3>Agromanagement Template<a class="headerlink" href="#agromanagement-template" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
     SiteCalendar:
         latitude:
@@ -379,8 +382,8 @@ crop cannot be present without an active site, and the <code class="docutils lit
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="command_line.html">Command Line Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="command_line.html#crop-configuration">Crop Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_line.html">Command Line Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="config_site.html">Creating a Site</a><ul>
@@ -407,7 +410,7 @@ crop cannot be present without an active site, and the <code class="docutils lit
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Command Line Configuration</div>
+                <div class="title">Command Line Arguments</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -458,7 +461,7 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <li><a class="reference internal" href="#sitecalendar">SiteCalendar</a></li>
 <li><a class="reference internal" href="#cropcalendar">CropCalendar</a></li>
 <li><a class="reference internal" href="#full-example">Full Example</a></li>
-<li><a class="reference internal" href="#template">Template</a></li>
+<li><a class="reference internal" href="#agromanagement-template">Agromanagement Template</a></li>
 </ul>
 </li>
 </ul>

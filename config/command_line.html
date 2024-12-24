@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating a Site" href="config_site.html" /><link rel="prev" title="Configurating a Simulation" href="config_agro.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Command Line Configuration - WOFOST-Gym 1.0.0 documentation</title>
+        <title>Command Line Arguments - WOFOST-Gym 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
@@ -202,23 +202,26 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="config_agro.html">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Command Line Configuration</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Command Line Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 </ul>
@@ -263,10 +266,57 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="command-line-configuration">
-<h1>Command Line Configuration<a class="headerlink" href="#command-line-configuration" title="Permalink to this heading">¶</a></h1>
-<section id="crop-configuration">
-<h2>Crop Configuration<a class="headerlink" href="#crop-configuration" title="Permalink to this heading">¶</a></h2>
+          <section id="command-line-arguments">
+<span id="command-line"></span><h1>Command Line Arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this heading">¶</a></h1>
+<p>Every time an environment is created, an associated configuration file is created as well.
+As all parameters can be specified by command line argument, (see <a class="reference internal" href="#crop-site-agro-command-line"><span class="std std-ref">Crop, Site, and Agromangement Config</span></a>), it is easy to lose track of how data was generated,
+or what environment an Agent was trained on. See <a class="reference internal" href="../pcse_gym/env_creation.html#env-creation"><span class="std std-ref">Environment Creation</span></a> for more information.</p>
+<p>It is desirable to rerun a simulation with the same (or similar) parameteres. Thus, we support loading an environment configuration. To do so, use the following
+command line argument:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test_new --load_config_fpath test/config.yaml</span>
+</pre></div>
+</div>
+<p>This will load the configuration at <code class="docutils literal notranslate"><span class="pre">/test/config.yaml</span></code> if it exists, and save a new configuration in <code class="docutils literal notranslate"><span class="pre">test_new/</span></code>.</p>
+<p>We can also load a configuration and modify its existing parameters. For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test_new/ --load_config_fpath /test/config.yaml --npk.ag.latitude 60</span>
+</pre></div>
+</div>
+<p>This will load the configuration at <code class="docutils literal notranslate"><span class="pre">/test/config.yaml</span></code>, modify the Agromanagement <code class="docutils literal notranslate"><span class="pre">latitude</span></code> parameter, and save a new configuration in <code class="docutils literal notranslate"><span class="pre">test_new/</span></code> while running a simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Agent specific arguments are described in <a class="reference internal" href="../rl_agents/train_agent.html#train-agent"><span class="std std-ref">Training RL Agents</span></a></p></li>
+<li><p>Data generation specific arguments are described in <a class="reference internal" href="../gen_data.html#gen-data"><span class="std std-ref">Generating Data</span></a></p></li>
+<li><p>Gym Environment specific arguments are described in <a class="reference internal" href="../pcse_gym/output.html#env-config"><span class="std std-ref">Environment Configuration</span></a></p></li>
+</ul>
+</div>
+<section id="crop-site-and-agromangement-config">
+<span id="crop-site-agro-command-line"></span><h2>Crop, Site, and Agromangement Config<a class="headerlink" href="#crop-site-and-agromangement-config" title="Permalink to this heading">¶</a></h2>
+<p>While all necessary simulation configuration can be done through the <code class="docutils literal notranslate"><span class="pre">agromanagement</span></code>, <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> YAML files,
+there are instances where it can be useful to run a quick simulation with only one or two parameters changed. In this case, it is
+very handy to have command line configuration.</p>
+<p>Every argument in the <a class="reference internal" href="config_agro.html#agro-template"><span class="std std-ref">Agromanagement Template</span></a>, <a class="reference internal" href="config_site.html#site-template"><span class="std std-ref">Site Template</span></a>, and <a class="reference internal" href="config_crop.html#crop-template"><span class="std std-ref">Crop Template</span></a>
+YAML can be passed via a command line argument and will be overridden when running the simulation.</p>
+<p>As an example, suppose that we want to change the <code class="docutils literal notranslate"><span class="pre">max_duration</span></code> to 400 parameter in the <code class="docutils literal notranslate"><span class="pre">agromanagment</span></code> arguments. We would run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test --npk.ag.max-duration 400</span>
+</pre></div>
+</div>
+<p>Likewise, we can change <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> parameters. Suppose we want to change the <code class="docutils literal notranslate"><span class="pre">site</span></code> parameter <code class="docutils literal notranslate"><span class="pre">CRAIRC</span></code> to 0.20 which controls the critical soil air content for aeraition, and the
+<code class="docutils literal notranslate"><span class="pre">crop</span></code> parameter <code class="docutils literal notranslate"><span class="pre">TBASEM</span></code> to 5 which controls the lower threshold for emergence. We would run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test/ --npk.wf.CRAIRC 0.20 --npk.TBASEM 5</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">agromanagement</span></code> arguments are modified by:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--npk.ag.&lt;PARAMETER&gt;</span>
+</pre></div>
+</div>
+<p>meanwhile, all <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> arguments are modified by:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--npk.wf.&lt;PARAMETER&gt;</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -325,8 +375,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Command Line Configuration</a><ul>
-<li><a class="reference internal" href="#crop-configuration">Crop Configuration</a></li>
+<li><a class="reference internal" href="#">Command Line Arguments</a><ul>
+<li><a class="reference internal" href="#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
 </ul>
 </li>
 </ul>

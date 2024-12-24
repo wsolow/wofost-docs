@@ -202,23 +202,26 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="config_agro.html">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_site.html">Creating a Site</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Creating a Crop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../train_agent.html">Training RL Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 </ul>
@@ -264,9 +267,12 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="creating-a-crop">
-<h1>Creating a Crop<a class="headerlink" href="#creating-a-crop" title="Permalink to this heading">¶</a></h1>
+<span id="crop-config"></span><h1>Creating a Crop<a class="headerlink" href="#creating-a-crop" title="Permalink to this heading">¶</a></h1>
 <section id="crop-creation">
 <h2>Crop Creation<a class="headerlink" href="#crop-creation" title="Permalink to this heading">¶</a></h2>
+<section id="crop-template">
+<span id="id1"></span><h3>Crop Template<a class="headerlink" href="#crop-template" title="Permalink to this heading">¶</a></h3>
+</section>
 </section>
 </section>
 
@@ -326,7 +332,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Creating a Crop</a><ul>
-<li><a class="reference internal" href="#crop-creation">Crop Creation</a></li>
+<li><a class="reference internal" href="#crop-creation">Crop Creation</a><ul>
+<li><a class="reference internal" href="#crop-template">Crop Template</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

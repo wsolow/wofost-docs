@@ -1,3 +1,5 @@
+.. _train_agent:
+
 Training RL Agents
 ==================
 

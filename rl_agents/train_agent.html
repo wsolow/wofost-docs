@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Python Crop Simulation Environment" href="../pcse/pcse.html" /><link rel="prev" title="Prespecified Policies" href="policies.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating a New RL Agent" href="create_agent.html" /><link rel="prev" title="Generating Data" href="../gen_data.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Reward Wrappers - WOFOST-Gym 1.0.0 documentation</title>
+        <title>Training RL Agents - WOFOST-Gym 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -208,17 +208,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Training RL Agents</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="create_agent.html">Creating a New RL Agent</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse_gym.html">PCSE Gym</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="env_creation.html">Environment Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output.html">Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="environments.html">Available Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="policies.html">Prespecified Policies</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Reward Wrappers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -246,7 +246,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/pcse_gym/rewards.rst.txt" title="View this page">
+  <a class="muted-link" href="../_sources/rl_agents/train_agent.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -260,14 +260,68 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="reward-wrappers">
-<h1>Reward Wrappers<a class="headerlink" href="#reward-wrappers" title="Permalink to this heading">¶</a></h1>
+          <section id="training-rl-agents">
+<span id="train-agent"></span><h1>Training RL Agents<a class="headerlink" href="#training-rl-agents" title="Permalink to this heading">¶</a></h1>
+<p>Support is provided for a variety of Online RL Algorithms including PPO, SAC and DQN. To add support for a new RL Agent,
+see <a class="reference internal" href="create_agent.html#create-agent"><span class="std std-ref">Creating a New RL Agent</span></a></p>
+<p>RL Algorithms (Agents) are specified in the <code class="docutils literal notranslate"><span class="pre">rl_algs/</span></code> directory. Each algorithm is self-contained in a <code class="docutils literal notranslate"><span class="pre">&lt;agent&gt;.py</span></code> file.
+Common functions for creating an environment, loading data to a buffer, etc are stored in the <code class="docutils literal notranslate"><span class="pre">rl_algs/rl_utils.py</span></code> file.
+RL Algorithm implementations follow the <a class="reference external" href="https://github.com/vwxyzjn/cleanrl">CleanRL</a> paradigm.</p>
+<section id="starting-a-training-run">
+<h2>Starting a Training Run<a class="headerlink" href="#starting-a-training-run" title="Permalink to this heading">¶</a></h2>
+<p>To train a RL Agent, run the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 train_agent.py --agent-type PPO --save-folder logs/ppo/</span>
+</pre></div>
+</div>
+<p>This trains a PPO Agent with the default hyperparameters and saves the output to <code class="docutils literal notranslate"><span class="pre">logs/ppo/</span></code>. Support for
+<a class="reference external" href="https://wandb.ai/site">Weights and Biases</a> is included and can be toggled with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 train_agent.py --agent_type &lt;agent_type&gt; --save-folder logs/test/ --track</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--agent-type</span></code> must match the name of the RL Agent <code class="docutils literal notranslate"><span class="pre">file.py</span></code> and name of the <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> class that selects actions.
+For more information, see <a class="reference internal" href="create_agent.html#create-agent"><span class="std std-ref">Creating a New RL Agent</span></a></p>
+</div>
+</section>
+<section id="algorithm-configuration">
+<h2>Algorithm Configuration<a class="headerlink" href="#algorithm-configuration" title="Permalink to this heading">¶</a></h2>
+<p>Every <code class="docutils literal notranslate"><span class="pre">&lt;agent&gt;.py</span></code> file in <code class="docutils literal notranslate"><span class="pre">rl_algs/</span></code> has an associated <code class="docutils literal notranslate"><span class="pre">Args</span></code> dataclass. See each <code class="docutils literal notranslate"><span class="pre">.py</span></code> file for the
+corresponding hyperparameters.</p>
+<p>To specify a hyperparameter, run the code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 train_agent.py --agent-type PPO --save-folder logs/ppo/ --PPO.gamma 0.85</span>
+</pre></div>
+</div>
+<p>The above block of code trains a PPO agent with <code class="docutils literal notranslate"><span class="pre">gamma</span></code> value of 0.85.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Ensure that the argumement specified, i.e. <code class="docutils literal notranslate"><span class="pre">--PPO.gamma</span></code> correspond to the agent type, in this case <code class="docutils literal notranslate"><span class="pre">--agent-type</span> <span class="pre">PPO</span></code>.
+Otherwise, the argument will not be passed to the correct algorithm.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with any top-level script in <strong>WOFOST-Gym</strong>, a configuration can be loaded via the <code class="docutils literal notranslate"><span class="pre">--load-config-fpath</span> <span class="pre">&lt;Path</span> <span class="pre">to</span> <span class="pre">file&gt;</span></code> argument.
+For training agents, this can be used to load a previously saved hyperparameter configuration, and/or can be used to load a previously saved
+environment. See <a class="reference internal" href="../config/command_line.html#command-line"><span class="std std-ref">Command Line Arguments</span></a> for more information.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="create_agent.html">Creating a New RL Agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="create_agent.html#creating-the-agent-py-file">Creating the Agent.py File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_agent.html#the-args-class">The Args Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_agent.html#the-actor-class">The Actor Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_agent.html#the-train-function">The Train Function</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 </section>
 
         </article>
@@ -275,23 +329,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../pcse/pcse.html">
+          <a class="next-page" href="create_agent.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Python Crop Simulation Environment</div>
+                <div class="title">Creating a New RL Agent</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="policies.html">
+          <a class="prev-page" href="../gen_data.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Prespecified Policies</div>
+                <div class="title">Generating Data</div>
                 
               </div>
             </a>
@@ -313,8 +367,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Training RL Agents</a><ul>
+<li><a class="reference internal" href="#starting-a-training-run">Starting a Training Run</a></li>
+<li><a class="reference internal" href="#algorithm-configuration">Algorithm Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
