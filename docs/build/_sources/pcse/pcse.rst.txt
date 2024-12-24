@@ -1,3 +1,5 @@
+.. _pcse:
+
 Python Crop Simulation Environment
 ==================================
 

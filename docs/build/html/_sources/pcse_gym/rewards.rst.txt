@@ -1,2 +1,4 @@
+.. _rewards:
+
 Reward Wrappers
 ===============

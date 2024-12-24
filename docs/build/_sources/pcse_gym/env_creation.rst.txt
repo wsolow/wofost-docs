@@ -13,6 +13,7 @@ For information on environment configuration, see :ref:`env_config`.
 .. caution::
 
     We do **not** recommend calling 
+    
     .. code-block:: python
 
         gymnasium.make(env-id, **kwargs) 

@@ -274,11 +274,10 @@ the crop simulation.</p>
 <p>For information on environment configuration, see <a class="reference internal" href="output.html#env-config"><span class="std std-ref">Environment Configuration</span></a>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>We do <strong>not</strong> recommend calling
-.. code-block:: python</p>
-<blockquote>
-<div><p>gymnasium.make(env-id, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs)</p>
-</div></blockquote>
+<p>We do <strong>not</strong> recommend calling</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gymnasium</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">env</span><span class="o">-</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>directly, as <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env(args)</span></code> also handles correctly passing arguments to the <code class="docutils literal notranslate"><span class="pre">gymnasium.make</span></code> function.</p>
 </div>
 <p>As an example, a default environment can be created with the following:</p>
