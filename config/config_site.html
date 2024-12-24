@@ -279,88 +279,245 @@ below for information on these parameters. For the blank template to make a site
 <h2>Site Parameters<a class="headerlink" href="#site-parameters" title="Permalink to this heading">¶</a></h2>
 <section id="npk-soil-parameters">
 <h3>NPK Soil Parameters<a class="headerlink" href="#npk-soil-parameters" title="Permalink to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| NSOILBASE            | Base soil supply of N available through mineralisation | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| NSOILBASE_FR         | Fraction of base soil N that comes available every day | SSi    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| PSOILBASE            | Base soil supply of P available through mineralisation | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| PSOILBASE_FR         | Fraction of base soil P that comes available every day | SSi    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| KSOILBASE            | Base soil supply of K available through mineralisation | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| KSOILBASE_FR         | Fraction of base soil K that comes available every day| SSi     | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| NAVAILI              | Initial N available in the N pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| PAVAILI              | Initial P available in the P pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| KAVAILI              | Initial K available in the K pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| NMAX                 | Maximum N available in the N pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| PMAX                 | Maximum P available in the N pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| KMAX                 | Maximum K available in the N pool                      | SSi    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| BG_N_SUPPLY          | Background supply of N through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| BG_P_SUPPLY          | Background supply of P through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| BG_K_SUPPLY          | Background supply of K through atmospheric deposition  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RNSOILMAX            | Maximum rate of surface N to subsoil                   | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RPSOILMAX            | Maximum rate of surface P to subsoil                   | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RKSOILMAX            | Maximum rate of surface K to subsoil                   | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RNABSORPTION         | Relative rate of N absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RPABSORPTION         | Relative rate of P absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RKABSORPTION         | Relative rate of K absorption from surface to subsoil  | SSi    |  kg ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| RNPKRUNOFF           | Relative rate of NPK runoff as a function of surface   | SSi    | -                           |
-|                      | water runoff                                           |        |                             |
-+======================+========================================================+========+=============================+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NSOILBASE</p></td>
+<td><p>Base soil supply of N available through mineralisation</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NSOILBASE_FR</p></td>
+<td><p>Fraction of base soil N that comes available every day</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>PSOILBASE</p></td>
+<td><p>Base soil supply of P available through mineralisation</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PSOILBASE_FR</p></td>
+<td><p>Fraction of base soil P that comes available every day</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KSOILBASE</p></td>
+<td><p>Base soil supply of K available through mineralisation</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KSOILBASE_FR</p></td>
+<td colspan="2"><p>Fraction of base soil K that comes available every day| SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NAVAILI</p></td>
+<td><p>Initial N available in the N pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PAVAILI</p></td>
+<td><p>Initial P available in the P pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>KAVAILI</p></td>
+<td><p>Initial K available in the K pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMAX</p></td>
+<td><p>Maximum N available in the N pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>PMAX</p></td>
+<td><p>Maximum P available in the N pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KMAX</p></td>
+<td><p>Maximum K available in the N pool</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>BG_N_SUPPLY</p></td>
+<td><p>Background supply of N through atmospheric deposition</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>BG_P_SUPPLY</p></td>
+<td><p>Background supply of P through atmospheric deposition</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>BG_K_SUPPLY</p></td>
+<td><p>Background supply of K through atmospheric deposition</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNSOILMAX</p></td>
+<td><p>Maximum rate of surface N to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPSOILMAX</p></td>
+<td><p>Maximum rate of surface P to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKSOILMAX</p></td>
+<td><p>Maximum rate of surface K to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RNABSORPTION</p></td>
+<td><p>Relative rate of N absorption from surface to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPABSORPTION</p></td>
+<td><p>Relative rate of P absorption from surface to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RKABSORPTION</p></td>
+<td><p>Relative rate of K absorption from surface to subsoil</p></td>
+<td><p>SSi</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNPKRUNOFF</p></td>
+<td><p>Relative rate of NPK runoff as a function of surface
+water runoff</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="soil-dynamics-parameters">
 <h3>Soil Dynamics Parameters<a class="headerlink" href="#soil-dynamics-parameters" title="Permalink to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| SMFCF                | Field capacity of the soil                             | SSo    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SM0                  | Porosity of the soil                                   | SSo    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SMW                  | Wilting point of the soil                              | SSo    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CRAIRC               | Soil critical air content (waterlogging)               | SSo    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SOPE                 | Maximum percolation rate root zone                     | SSo    |  cm day-1                   |
-+———————-+——————————————————–+——–+—————————–+
-| KSUB                 | Maximum percolation rate subsoil                       | SSo    |  cm day-1                   |
-+———————-+——————————————————–+——–+—————————–+
-| RDMSOL               | Soil rootable depth                                    | SSo    |  cm                         |
-+———————-+——————————————————–+——–+—————————–+
-| IFUNRN               | Indicates whether non-infiltrating fraction of rain is | SSi    | -                           |
-|                      | a function of storm size (1) or not (0)                |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| SSMAX                | Maximum surface storage                                | SSi    |  cm                         |
-+———————-+——————————————————–+——–+—————————–+
-| SSI                  | Initial surface storage                                | SSi    |  cm                         |
-+———————-+——————————————————–+——–+—————————–+
-| WAV                  | Initial amount of water in total soil profile          | SSi    |  cm                         |
-+———————-+——————————————————–+——–+—————————–+
-| NOTINF               | Maximum fraction of rain not-infiltrating into the soil| SSi    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SMLIM                | Initial maximum moisture content in initial rooting    | SSi    | -                           |
-|                      | depth zone                                             |        |                             |
-+———————-+——————————————————–+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMFCF</p></td>
+<td><p>Field capacity of the soil</p></td>
+<td><p>SSo</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SM0</p></td>
+<td><p>Porosity of the soil</p></td>
+<td><p>SSo</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SMW</p></td>
+<td><p>Wilting point of the soil</p></td>
+<td><p>SSo</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CRAIRC</p></td>
+<td><p>Soil critical air content (waterlogging)</p></td>
+<td><p>SSo</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SOPE</p></td>
+<td><p>Maximum percolation rate root zone</p></td>
+<td><p>SSo</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KSUB</p></td>
+<td><p>Maximum percolation rate subsoil</p></td>
+<td><p>SSo</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RDMSOL</p></td>
+<td><p>Soil rootable depth</p></td>
+<td><p>SSo</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>IFUNRN</p></td>
+<td><p>Indicates whether non-infiltrating fraction of rain is
+a function of storm size (1) or not (0)</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SSMAX</p></td>
+<td><p>Maximum surface storage</p></td>
+<td><p>SSi</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>SSI</p></td>
+<td><p>Initial surface storage</p></td>
+<td><p>SSi</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-even"><td><p>WAV</p></td>
+<td><p>Initial amount of water in total soil profile</p></td>
+<td><p>SSi</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>NOTINF</p></td>
+<td><p>Maximum fraction of rain not-infiltrating into the soil</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SMLIM</p></td>
+<td><p>Initial maximum moisture content in initial rooting
+depth zone</p></td>
+<td><p>SSi</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="site-template">
 <span id="id1"></span><h3>Site Template<a class="headerlink" href="#site-template" title="Permalink to this heading">¶</a></h3>
