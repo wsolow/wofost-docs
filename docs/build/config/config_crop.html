@@ -276,440 +276,1267 @@ below for information on these parameters. For the blank template to make a crop
 <h2>Crop Parameters<a class="headerlink" href="#crop-parameters" title="Link to this heading">¶</a></h2>
 <section id="wofost-parameters">
 <h3>WOFOST Parameters<a class="headerlink" href="#wofost-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| CVL                  | Conversion factor for assimilates to leaves            | SCr    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CVO                  | Conversion factor for assimilates to storage organs    | SCr    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CVR                  | Conversion factor for assimilates to roots             | SCr    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CVS                  | Conversion factor for assimilates to stems             | SCr    | -                           |
-+======================+========================================================+========+=============================+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CVL</p></td>
+<td><p>Conversion factor for assimilates to leaves</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CVO</p></td>
+<td><p>Conversion factor for assimilates to storage organs</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>CVR</p></td>
+<td><p>Conversion factor for assimilates to roots</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CVS</p></td>
+<td><p>Conversion factor for assimilates to stems</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="assimilation-parameters">
 <h3>Assimilation Parameters<a class="headerlink" href="#assimilation-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| AMAXTB               | Max leaf CO2   assimilation rate as a function of DVS  | TCr    |  kg ha-1 hr-1               |
-+———————-+——————————————————–+——–+—————————–+
-| EFFTB                | Light use efficiency of single leaf as a function of   | TCr    |  kg ha-1 hr-1 /(J m-2 s-1)| |
-|                      | daily mean temperature                                 |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| KDIFTB               | Extinction coefficient for diffuse visible as function | TCr    | -                           |
-|                      | of DVS                                                 |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| TMPFTB               | Reduction factor of AMAX as function of daily mean     | TCr    | -                           |
-|                      | temperature                                            |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| TNPFTB               | Reduction factor of AMAX as function of daily minimum  | TCr    | -                           |
-|                      | temperature                                            |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| CO2AMAXTB            | Correction factor for AMAX given atmospheric CO2       | TCr    | -                           |
-|                      |  concentration                                         |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| CO2EFFTB             | Correction factor for EFF given atmospheric CO2        | TCr    | -                           |
-|                      | concentration                                          |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| CO2                  | Atmospheric CO2 concentration                          | SCr    | ppm                         |
-+======================+========================================================+========+=============================+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AMAXTB</p></td>
+<td><p>Max leaf CO2   assimilation rate as a function of DVS</p></td>
+<td><p>TCr</p></td>
+<td><p>kg ha-1 hr-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>EFFTB</p></td>
+<td><p>Light use efficiency of single leaf as a function of
+daily mean temperature</p></td>
+<td><p>TCr</p></td>
+<td><p>kg ha-1 hr-1 /(J m-2 s-1)|</p></td>
+</tr>
+<tr class="row-even"><td><p>KDIFTB</p></td>
+<td><p>Extinction coefficient for diffuse visible as function
+of DVS</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>TMPFTB</p></td>
+<td><p>Reduction factor of AMAX as function of daily mean
+temperature</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>TNPFTB</p></td>
+<td><p>Reduction factor of AMAX as function of daily minimum
+temperature</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CO2AMAXTB</p></td>
+<td><dl class="simple">
+<dt>Correction factor for AMAX given atmospheric CO2</dt><dd><p>concentration</p>
+</dd>
+</dl>
+</td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>CO2EFFTB</p></td>
+<td><p>Correction factor for EFF given atmospheric CO2
+concentration</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CO2</p></td>
+<td><p>Atmospheric CO2 concentration</p></td>
+<td><p>SCr</p></td>
+<td><p>ppm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="evapotranspiration-parameters">
 <h3>Evapotranspiration Parameters<a class="headerlink" href="#evapotranspiration-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| CFET                 | Correction factor for potential transpiration rate     | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| DEPNR                | Dependency number for crop sensitivity to soil         | S      | -                           |
-|                      |  moisture stress                                       |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| KDIFTB               | Extinction coefficient for diffuse visible as function | T      | -                           |
-|                      |    of DVS                                              |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| IOX                  | Switch oxygen stress on (1) or off (0)                 | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| IAIRDU               | Switch airducts on (1) or off (0)                      | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CRAIRC               | Critical air content for root aeration                 | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SM0                  | Soil porosity                                          | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SMW                  | Volumetric soil moisture content at wilting point      | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| SMFCF                | Volumetric soil moisture content at field capacity     | S      | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| CO2                  | Atmospheric CO2 concentration                          | S      | ppm                         |
-+———————-+——————————————————–+——–+—————————–+
-| CO2TRATB             | Reduction factor for TRAMX as function of atmospheric  | T      | -                           |
-|                      | CO2 concentration                                      |        |                             |
-+======================+========================================================+========+=============================+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CFET</p></td>
+<td><p>Correction factor for potential transpiration rate</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DEPNR</p></td>
+<td><dl class="simple">
+<dt>Dependency number for crop sensitivity to soil</dt><dd><p>moisture stress</p>
+</dd>
+</dl>
+</td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KDIFTB</p></td>
+<td><dl class="simple">
+<dt>Extinction coefficient for diffuse visible as function</dt><dd><p>of DVS</p>
+</dd>
+</dl>
+</td>
+<td><p>T</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IOX</p></td>
+<td><p>Switch oxygen stress on (1) or off (0)</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>IAIRDU</p></td>
+<td><p>Switch airducts on (1) or off (0)</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CRAIRC</p></td>
+<td><p>Critical air content for root aeration</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SM0</p></td>
+<td><p>Soil porosity</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SMW</p></td>
+<td><p>Volumetric soil moisture content at wilting point</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SMFCF</p></td>
+<td><p>Volumetric soil moisture content at field capacity</p></td>
+<td><p>S</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CO2</p></td>
+<td><p>Atmospheric CO2 concentration</p></td>
+<td><p>S</p></td>
+<td><p>ppm</p></td>
+</tr>
+<tr class="row-even"><td><p>CO2TRATB</p></td>
+<td><p>Reduction factor for TRAMX as function of atmospheric
+CO2 concentration</p></td>
+<td><p>T</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="leaf-dynamics-parameters">
 <h3>Leaf Dynamics Parameters<a class="headerlink" href="#leaf-dynamics-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| RGRLAI               | Maximum relative increase in LAI                       | SCr    |  ha ha-1 d-1                |
-+———————-+——————————————————–+——–+—————————–+
-| SPAN                 | Life span of leaves growing at 35°C                    | SCr    | d                           |
-+———————-+——————————————————–+——–+—————————–+
-| TBASE                | Lower threshold temp for ageing of leaves              | SCr    |    C                        |
-+———————-+——————————————————–+——–+—————————–+
-| PERDL                | Max relative death rate of leaves due to water stress  | SCr    | -                           |
-+———————-+——————————————————–+——–+—————————–+
-| TDWI                 | Initial total crop dry weight                          | SCr    |  kg ha-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| KDIFTB               | Extinction coefficient for diffuse visible light as    | TCr    | -                           |
-|                      | function of DVS                                        |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| SLATB                | Specific leaf area as a function of DVS                | TCr    |  ha kg-1                    |
-+———————-+——————————————————–+——–+—————————–+
-| RDRNS                | Max relative death rate of leaves due to nutrient      | TCr    | -                           |
-|                      | NPK stress                                             |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| NLAI                 | Coefficient for the reduction due to nutrient NPK      | TCr    | -                           |
-|                      |     stress of the LAI increase (during juvenile phase) |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| NSLA                 | Coefficient for the effect of nutrient NPK stress      | TCr    | -                           |
-|                      | on SLA reduction                                       |        |                             |
-+======================+========================================================+========+=============================+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RGRLAI</p></td>
+<td><p>Maximum relative increase in LAI</p></td>
+<td><p>SCr</p></td>
+<td><p>ha ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPAN</p></td>
+<td><p>Life span of leaves growing at 35°C</p></td>
+<td><p>SCr</p></td>
+<td><p>d</p></td>
+</tr>
+<tr class="row-even"><td><p>TBASE</p></td>
+<td><p>Lower threshold temp for ageing of leaves</p></td>
+<td><p>SCr</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-odd"><td><p>PERDL</p></td>
+<td><p>Max relative death rate of leaves due to water stress</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>TDWI</p></td>
+<td><p>Initial total crop dry weight</p></td>
+<td><p>SCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KDIFTB</p></td>
+<td><p>Extinction coefficient for diffuse visible light as
+function of DVS</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SLATB</p></td>
+<td><p>Specific leaf area as a function of DVS</p></td>
+<td><p>TCr</p></td>
+<td><p>ha kg-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDRNS</p></td>
+<td><p>Max relative death rate of leaves due to nutrient
+NPK stress</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NLAI</p></td>
+<td><dl class="simple">
+<dt>Coefficient for the reduction due to nutrient NPK</dt><dd><p>stress of the LAI increase (during juvenile phase)</p>
+</dd>
+</dl>
+</td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>NSLA</p></td>
+<td><p>Coefficient for the effect of nutrient NPK stress
+on SLA reduction</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="npk-dynamics-parameters">
 <h3>NPK Dynamics Parameters<a class="headerlink" href="#npk-dynamics-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+========================================================+========+=============================+
-| Name                 | Description                                            | Type   | Unit                        |
-+======================+========================================================+========+=============================+
-| NMAXLV_TB            | Maximum N concentration in leaves as function of dvs   |        | kg N kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| PMAXLV_TB            | Maximum P concentration in leaves as function of dvs   |        | kg P kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| KMAXLV_TB            | Maximum K concentration in leaves as function of dvs   |        | kg K kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| NMAXRT_FR            | Maximum N concentration in roots as fraction of        |        |    -                        |
-|                      |  maximum N concentration in leaves                     |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| PMAXRT_FR            | Maximum P concentration in roots as fraction of        |        |    -                        |
-|                      | maximum P concentration in leaves                      |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| KMAXRT_FR            | Maximum K concentration in roots as fraction of        |        |     -                       |
-|                      | maximum K concentration in leaves                      |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| NMAXST_FR            | Maximum N concentration in stems as fraction of        |        |     -                       |
-|                      | maximum N concentration in leaves                      |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| PMAXST_FR            | Maximum P concentration in stems as fraction of        |        |  -                          |
-|                      | maximum P concentration in leaves                      |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| KMAXST_FR            | Maximum K concentration in stems as fraction of        |        |     -                       |
-|                      | maximum K concentration in leaves                      |        |                             |
-+———————-+——————————————————–+——–+—————————–+
-| NRESIDLV             | Residual N fraction in leaves                          |        | kg N kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| PRESIDLV             | Residual P fraction in leaves                          |        | kg P kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| KRESIDLV             | Residual K fraction in leaves                          |        | kg K kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| NRESIDRT             | Residual N fraction in roots                           |        | kg N kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| PRESIDRT             | Residual P fraction in roots                           |        | kg P kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| KRESIDRT             | Residual K fraction in roots                           |        | kg K kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| NRESIDST             | Residual N fraction in stems                           |        | kg N kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| PRESIDST             | Residual P fraction in stems                           |        | kg P kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+
-| KRESIDST             | Residual K fraction in stems                           |        | kg K kg-1 dry biomass       |
-+———————-+——————————————————–+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMAXLV_TB</p></td>
+<td><p>Maximum N concentration in leaves as function of dvs</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMAXLV_TB</p></td>
+<td><p>Maximum P concentration in leaves as function of dvs</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KMAXLV_TB</p></td>
+<td><p>Maximum K concentration in leaves as function of dvs</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMAXRT_FR</p></td>
+<td><dl class="simple">
+<dt>Maximum N concentration in roots as fraction of</dt><dd><p>maximum N concentration in leaves</p>
+</dd>
+</dl>
+</td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>PMAXRT_FR</p></td>
+<td><p>Maximum P concentration in roots as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>KMAXRT_FR</p></td>
+<td><p>Maximum K concentration in roots as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NMAXST_FR</p></td>
+<td><p>Maximum N concentration in stems as fraction of
+maximum N concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PMAXST_FR</p></td>
+<td><p>Maximum P concentration in stems as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KMAXST_FR</p></td>
+<td><p>Maximum K concentration in stems as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>NRESIDLV</p></td>
+<td><p>Residual N fraction in leaves</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>PRESIDLV</p></td>
+<td><p>Residual P fraction in leaves</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>KRESIDLV</p></td>
+<td><p>Residual K fraction in leaves</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>NRESIDRT</p></td>
+<td><p>Residual N fraction in roots</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRESIDRT</p></td>
+<td><p>Residual P fraction in roots</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KRESIDRT</p></td>
+<td><p>Residual K fraction in roots</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NRESIDST</p></td>
+<td><p>Residual N fraction in stems</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>PRESIDST</p></td>
+<td><p>Residual P fraction in stems</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>KRESIDST</p></td>
+<td><p>Residual K fraction in stems</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="partitioning-parameters">
 <h3>Partitioning Parameters<a class="headerlink" href="#partitioning-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| FRTB                 | Partitioning to roots as a function of development stage   | TCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| FSTB                 | Partitioning to stems as a function of development stage   | TCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| FLTB                 | Partitioning to leaves as a function of development stage  | TCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| FOTB                 | Partitioning to storage organs as a function of development| TCr    | -                           |
-|                      |  stage                                                     |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NPART                | Coefficient for the effect of N stress on leaf biomass     | SCr    | -                           |
-|                      | allocation                                                 |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NTHRESH              | Threshold above which surface nitrogen induces stress      | TCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+
-| PTHRESH              | Threshold above which surface phosphorous induces stress   | TCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+
-| KTHRESH              | Threshold above which surface potassium induces stress     | TCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FRTB</p></td>
+<td><p>Partitioning to roots as a function of development stage</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FSTB</p></td>
+<td><p>Partitioning to stems as a function of development stage</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>FLTB</p></td>
+<td><p>Partitioning to leaves as a function of development stage</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FOTB</p></td>
+<td><dl class="simple">
+<dt>Partitioning to storage organs as a function of development</dt><dd><p>stage</p>
+</dd>
+</dl>
+</td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NPART</p></td>
+<td><p>Coefficient for the effect of N stress on leaf biomass
+allocation</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>NTHRESH</p></td>
+<td><p>Threshold above which surface nitrogen induces stress</p></td>
+<td><p>TCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>PTHRESH</p></td>
+<td><p>Threshold above which surface phosphorous induces stress</p></td>
+<td><p>TCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KTHRESH</p></td>
+<td><p>Threshold above which surface potassium induces stress</p></td>
+<td><p>TCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="vernalization-parameters">
 <h3>Vernalization Parameters<a class="headerlink" href="#vernalization-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| VERNSAT              | Saturated vernalisation requirements                       | SCr    | days                        |
-+———————-+————————————————————+——–+—————————–+
-| VERNBASE             | Base vernalisation requirements                            | SCr    | days                        |
-+———————-+————————————————————+——–+—————————–+
-| VERNRTB              | Rate of vernalisation as a function of daily mean          | TCr    | -                           |
-|                      |           temperature                                      |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| VERNDVS              | Critical development stage after which the effect          | SCr    | -                           |
-|                      | of vernalisation is halted                                 |        |                             |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>VERNSAT</p></td>
+<td><p>Saturated vernalisation requirements</p></td>
+<td><p>SCr</p></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-odd"><td><p>VERNBASE</p></td>
+<td><p>Base vernalisation requirements</p></td>
+<td><p>SCr</p></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-even"><td><p>VERNRTB</p></td>
+<td><dl class="simple">
+<dt>Rate of vernalisation as a function of daily mean</dt><dd><p>temperature</p>
+</dd>
+</dl>
+</td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>VERNDVS</p></td>
+<td><p>Critical development stage after which the effect
+of vernalisation is halted</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="phenology-parameters">
 <h3>Phenology Parameters<a class="headerlink" href="#phenology-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| DTBEM                | Consecutive days required above temperature for germination| SCr    | day                         |
-+———————-+————————————————————+——–+—————————–+
-| TSUMEM               | Temperature sum from sowing to emergence                   | SCr    |  C  day                     |
-+———————-+————————————————————+——–+—————————–+
-| TBASEM               | Base temperature for emergence                             | SCr    |  C                          |
-+———————-+————————————————————+——–+—————————–+
-| TEFFMX               | Maximum effective temperature for emergence                | SCr    |  C                          |
-+———————-+————————————————————+——–+—————————–+
-| TSUM1                | Temperature sum from emergence to anthesis                 | SCr    |  C  day                     |
-+———————-+————————————————————+——–+—————————–+
-| TSUM2                | Temperature sum from anthesis to maturity                  | SCr    |  C  day                     |
-+———————-+————————————————————+——–+—————————–+
-| TSUM3                | Temperature sum from maturity to death                     | SCr    |  C  day                     |
-+———————-+————————————————————+——–+—————————–+
-| IDSL                 | Switch for phenological development options                | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| DLO                  | Optimal daylength for phenological development             | SCr    | hr                          |
-+———————-+————————————————————+——–+—————————–+
-| DLC                  | Critical daylength for phenological development            | SCr    | hr                          |
-+———————-+————————————————————+——–+—————————–+
-| DVSI                 | Initial development stage at emergence                     | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| DVSM                 | Mature development stage, usually 2.0                      | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| DVSEND               | Final development stage                                    | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| DTSMTB               | Daily increase in temperature sum as a function of daily   | TCr    |  C                          |
-|                      | mean temperature                                           |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| DORM                 | Dormancy threshold after which the plant enters dormancy   | SCr    | day                         |
-+———————-+————————————————————+——–+—————————–+
-| DORMCD               | The number of days a plant will stay dormant               | SCr    | day                         |
-+———————-+————————————————————+——–+—————————–+
-| AGEI                 | The initial age of the crop in years                       | SCr    | year                        |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DTBEM</p></td>
+<td><p>Consecutive days required above temperature for germination</p></td>
+<td><p>SCr</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-odd"><td><p>TSUMEM</p></td>
+<td><p>Temperature sum from sowing to emergence</p></td>
+<td><p>SCr</p></td>
+<td><p>C  day</p></td>
+</tr>
+<tr class="row-even"><td><p>TBASEM</p></td>
+<td><p>Base temperature for emergence</p></td>
+<td><p>SCr</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEFFMX</p></td>
+<td><p>Maximum effective temperature for emergence</p></td>
+<td><p>SCr</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p>TSUM1</p></td>
+<td><p>Temperature sum from emergence to anthesis</p></td>
+<td><p>SCr</p></td>
+<td><p>C  day</p></td>
+</tr>
+<tr class="row-odd"><td><p>TSUM2</p></td>
+<td><p>Temperature sum from anthesis to maturity</p></td>
+<td><p>SCr</p></td>
+<td><p>C  day</p></td>
+</tr>
+<tr class="row-even"><td><p>TSUM3</p></td>
+<td><p>Temperature sum from maturity to death</p></td>
+<td><p>SCr</p></td>
+<td><p>C  day</p></td>
+</tr>
+<tr class="row-odd"><td><p>IDSL</p></td>
+<td><p>Switch for phenological development options</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>DLO</p></td>
+<td><p>Optimal daylength for phenological development</p></td>
+<td><p>SCr</p></td>
+<td><p>hr</p></td>
+</tr>
+<tr class="row-odd"><td><p>DLC</p></td>
+<td><p>Critical daylength for phenological development</p></td>
+<td><p>SCr</p></td>
+<td><p>hr</p></td>
+</tr>
+<tr class="row-even"><td><p>DVSI</p></td>
+<td><p>Initial development stage at emergence</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DVSM</p></td>
+<td><p>Mature development stage, usually 2.0</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>DVSEND</p></td>
+<td><p>Final development stage</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DTSMTB</p></td>
+<td><p>Daily increase in temperature sum as a function of daily
+mean temperature</p></td>
+<td><p>TCr</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p>DORM</p></td>
+<td><p>Dormancy threshold after which the plant enters dormancy</p></td>
+<td><p>SCr</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-odd"><td><p>DORMCD</p></td>
+<td><p>The number of days a plant will stay dormant</p></td>
+<td><p>SCr</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-even"><td><p>AGEI</p></td>
+<td><p>The initial age of the crop in years</p></td>
+<td><p>SCr</p></td>
+<td><p>year</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="respiration-parameters">
 <h3>Respiration Parameters<a class="headerlink" href="#respiration-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| Q10                  | Relative increase in maintenance respiration rate with     | SCr    | -                           |
-|                      | each 10 degrees increase in temperature                    |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| RMR                  | Relative maintenance respiration rate for roots            | SCr    |  kg CH2O kg-1 d-1           |
-+———————-+————————————————————+——–+—————————–+
-| RMS                  | Relative maintenance respiration rate for stems            | SCr    |  kg CH2O kg-1 d-1           |
-+———————-+————————————————————+——–+—————————–+
-| RML                  | Relative maintenance respiration rate for leaves           | SCr    |  kg CH2O kg-1 d-1           |
-+———————-+————————————————————+——–+—————————–+
-| RMO                  | Relative maintenance respiration rate for storage organs   | SCr    |  kg CH2O kg-1 d-1           |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Q10</p></td>
+<td><p>Relative increase in maintenance respiration rate with
+each 10 degrees increase in temperature</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>RMR</p></td>
+<td><p>Relative maintenance respiration rate for roots</p></td>
+<td><p>SCr</p></td>
+<td><p>kg CH2O kg-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RMS</p></td>
+<td><p>Relative maintenance respiration rate for stems</p></td>
+<td><p>SCr</p></td>
+<td><p>kg CH2O kg-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RML</p></td>
+<td><p>Relative maintenance respiration rate for leaves</p></td>
+<td><p>SCr</p></td>
+<td><p>kg CH2O kg-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RMO</p></td>
+<td><p>Relative maintenance respiration rate for storage organs</p></td>
+<td><p>SCr</p></td>
+<td><p>kg CH2O kg-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="root-dynamics-parameters">
 <h3>Root Dynamics Parameters<a class="headerlink" href="#root-dynamics-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| RDI                  | Initial rooting depth                                      | SCr    | cm                          |
-+———————-+————————————————————+——–+—————————–+
-| RRI                  | Daily increase in rooting depth                            | SCr    |  cm day-1                   |
-+———————-+————————————————————+——–+—————————–+
-| RDMCR                | Maximum rooting depth of the crop                          | SCR    | cm                          |
-+———————-+————————————————————+——–+—————————–+
-| RDMSOL               | Maximum rooting depth of the soil                          | SSo    | cm                          |
-+———————-+————————————————————+——–+—————————–+
-| TDWI                 | Initial total crop dry weight                              | SCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+
-| IAIRDU               | Presence of air ducts in the root (1) or not (0)           | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| RDRRTB               | Relative death rate of roots as a function of development  | TCr    | -                           |
-|                      |    stage                                                   |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| RDRROS               | Relative death rate of roots as a function of oxygen stress  TCr    | -                           |
-+———————-+————————————————————+——–+—————————–+
-| RDRRNPK              | Relative rate of root death due to NPK excess              | SCr    | -                           |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RDI</p></td>
+<td><p>Initial rooting depth</p></td>
+<td><p>SCr</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>RRI</p></td>
+<td><p>Daily increase in rooting depth</p></td>
+<td><p>SCr</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RDMCR</p></td>
+<td><p>Maximum rooting depth of the crop</p></td>
+<td><p>SCR</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDMSOL</p></td>
+<td><p>Maximum rooting depth of the soil</p></td>
+<td><p>SSo</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-even"><td><p>TDWI</p></td>
+<td><p>Initial total crop dry weight</p></td>
+<td><p>SCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>IAIRDU</p></td>
+<td><p>Presence of air ducts in the root (1) or not (0)</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>RDRRTB</p></td>
+<td><dl class="simple">
+<dt>Relative death rate of roots as a function of development</dt><dd><p>stage</p>
+</dd>
+</dl>
+</td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>RDRROS</p></td>
+<td colspan="2"><p>Relative death rate of roots as a function of oxygen stress  TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>RDRRNPK</p></td>
+<td><p>Relative rate of root death due to NPK excess</p></td>
+<td><p>SCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="stem-dynamics-parameters">
 <h3>Stem Dynamics Parameters<a class="headerlink" href="#stem-dynamics-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| TDWI                 | Initial total crop dry weight                              | SCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+
-| RDRSTB               | Relative death rate of stems as a function of development  | TCr    | -                           |
-|                      | stage                                                      |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| SSATB                | Specific Stem Area as a function of development stage      | TCr    |  ha kg-1                    |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TDWI</p></td>
+<td><p>Initial total crop dry weight</p></td>
+<td><p>SCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDRSTB</p></td>
+<td><p>Relative death rate of stems as a function of development
+stage</p></td>
+<td><p>TCr</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SSATB</p></td>
+<td><p>Specific Stem Area as a function of development stage</p></td>
+<td><p>TCr</p></td>
+<td><p>ha kg-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="storage-organ-dynamics-parameters">
 <h3>Storage Organ Dynamics Parameters<a class="headerlink" href="#storage-organ-dynamics-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| TDWI                 | Initial total crop dry weight                              | SCr    |  kg ha-1                    |
-+———————-+————————————————————+——–+—————————–+
-| RDRSOB               | Relative Death rate of storage organs as a function of     | Scr    |  kg ha-1                    |
-|                      | development stage                                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| SPA                  | Specific Pod Area                                          | SCr    |  ha kg-1                    |
-+———————-+————————————————————+——–+—————————–+
-| RDRSOB               | Relative Death rate of storage organs as a function of     | Scr    |  kg ha-1                    |
-|                      | frost kill                                                 |        |                             |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TDWI</p></td>
+<td><p>Initial total crop dry weight</p></td>
+<td><p>SCr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDRSOB</p></td>
+<td><p>Relative Death rate of storage organs as a function of
+development stage</p></td>
+<td><p>Scr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>SPA</p></td>
+<td><p>Specific Pod Area</p></td>
+<td><p>SCr</p></td>
+<td><p>ha kg-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDRSOB</p></td>
+<td><p>Relative Death rate of storage organs as a function of
+frost kill</p></td>
+<td><p>Scr</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="npk-demand-uptake-parameters">
 <h3>NPK Demand Uptake Parameters<a class="headerlink" href="#npk-demand-uptake-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| NMAXLV_TB            | Maximum N concentration in leaves as function of DVS       |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PMAXLV_TB            | Maximum P concentration in leaves as function of DVS       |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KMAXLV_TB            | Maximum K concentration in leaves as function of DVS       |        |   kg N kg-1 dry biomass     |
-+———————-+————————————————————+——–+—————————–+
-| NMAXRT_FR            | Maximum N concentration in roots as fraction of            |        |    -                        |
-|                      |  maximum N concentration in leaves                         |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PMAXRT_FR            | Maximum P concentration in roots as fraction of            |        |    -                        |
-|                      | maximum P concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KMAXRT_FR            | Maximum K concentration in roots as fraction of            |        |     -                       |
-|                      | maximum K concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NMAXST_FR            | Maximum N concentration in stems as fraction of            |        |     -                       |
-|                      | maximum N concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PMAXST_FR            | Maximum P concentration in stems as fraction of            |        |  -                          |
-|                      | maximum P concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KMAXST_FR            | Maximum K concentration in stems as fraction of            |        |     -                       |
-|                      | maximum K concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NMAXSO               | Maximum N concentration in storage organs                  |        |  kg N kg-1 dry biomass      |
-+———————-+————————————————————+——–+—————————–+
-| PMAXSO               | Maximum P concentration in storage organs                  |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KMAXSO               | Maximum K concentration in storage organs                  |        |  kg N kg-1 dry biomass      |
-+———————-+————————————————————+——–+—————————–+
-| NCRIT_FR             | Critical N concentration as fraction of maximum N          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PCRIT_FR             | Critical P concentration as fraction of maximum P          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KCRIT_FR             | Critical K concentration as fraction of maximum K          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| TCNT                 | Time coefficient for N translation to storage organs       |        |    days                     |
-+———————-+————————————————————+——–+—————————–+
-| TCPT                 | Time coefficient for P translation to storage organs       |        | days                        |
-+———————-+————————————————————+——–+—————————–+
-| TCKT                 | Time coefficient for K translation to storage organs       |        |    days                     |
-+———————-+————————————————————+——–+—————————–+
-| NFIX_FR              | Fraction of crop nitrogen uptake by biological fixation    |        |  kg N kg-1 dry biomass      |
-+———————-+————————————————————+——–+—————————–+
-| RNUPTAKEMAX          | Maximum rate of N uptake                                   |        |  kg N ha-1 d-1              |
-+———————-+————————————————————+——–+—————————–+
-| RPUPTAKEMAX          | Maximum rate of P uptake                                   |        |  kg N ha-1 d-1              |
-+———————-+————————————————————+——–+—————————–+
-| RKUPTAKEMAX          | Maximum rate of K uptake                                   |        |  kg N ha-1 d-1              |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMAXLV_TB</p></td>
+<td><p>Maximum N concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMAXLV_TB</p></td>
+<td><p>Maximum P concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KMAXLV_TB</p></td>
+<td><p>Maximum K concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMAXRT_FR</p></td>
+<td><dl class="simple">
+<dt>Maximum N concentration in roots as fraction of</dt><dd><p>maximum N concentration in leaves</p>
+</dd>
+</dl>
+</td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>PMAXRT_FR</p></td>
+<td><p>Maximum P concentration in roots as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>KMAXRT_FR</p></td>
+<td><p>Maximum K concentration in roots as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NMAXST_FR</p></td>
+<td><p>Maximum N concentration in stems as fraction of
+maximum N concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PMAXST_FR</p></td>
+<td><p>Maximum P concentration in stems as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KMAXST_FR</p></td>
+<td><p>Maximum K concentration in stems as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>NMAXSO</p></td>
+<td><p>Maximum N concentration in storage organs</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>PMAXSO</p></td>
+<td><p>Maximum P concentration in storage organs</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>KMAXSO</p></td>
+<td><p>Maximum K concentration in storage organs</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>NCRIT_FR</p></td>
+<td><p>Critical N concentration as fraction of maximum N
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PCRIT_FR</p></td>
+<td><p>Critical P concentration as fraction of maximum P
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KCRIT_FR</p></td>
+<td><p>Critical K concentration as fraction of maximum K
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>TCNT</p></td>
+<td><p>Time coefficient for N translation to storage organs</p></td>
+<td></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-even"><td><p>TCPT</p></td>
+<td><p>Time coefficient for P translation to storage organs</p></td>
+<td></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-odd"><td><p>TCKT</p></td>
+<td><p>Time coefficient for K translation to storage organs</p></td>
+<td></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-even"><td><p>NFIX_FR</p></td>
+<td><p>Fraction of crop nitrogen uptake by biological fixation</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNUPTAKEMAX</p></td>
+<td><p>Maximum rate of N uptake</p></td>
+<td></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPUPTAKEMAX</p></td>
+<td><p>Maximum rate of P uptake</p></td>
+<td></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKUPTAKEMAX</p></td>
+<td><p>Maximum rate of K uptake</p></td>
+<td></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="npk-stress-parameters">
 <h3>NPK Stress Parameters<a class="headerlink" href="#npk-stress-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| NMAXLV_TB            | Maximum N concentration in leaves as function of DVS       |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PMAXLV_TB            | Maximum P concentration in leaves as function of DVS       |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KMAXLV_TB            | Maximum K concentration in leaves as function of DVS       |        |   kg N kg-1 dry biomass     |
-+———————-+————————————————————+——–+—————————–+
-| NMAXRT_FR            | Maximum N concentration in roots as fraction of            |        |    -                        |
-|                      |  maximum N concentration in leaves                         |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PMAXRT_FR            | Maximum P concentration in roots as fraction of            |        |    -                        |
-|                      | maximum P concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KMAXRT_FR            | Maximum K concentration in roots as fraction of            |        |     -                       |
-|                      | maximum K concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NMAXST_FR            | Maximum N concentration in stems as fraction of            |        |     -                       |
-|                      | maximum N concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PMAXST_FR            | Maximum P concentration in stems as fraction of            |        |  -                          |
-|                      | maximum P concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KMAXST_FR            | Maximum K concentration in stems as fraction of            |        |     -                       |
-|                      | maximum K concentration in leaves                          |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NCRIT_FR             | Critical N concentration as fraction of maximum N          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| PCRIT_FR             | Critical P concentration as fraction of maximum P          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| KCRIT_FR             | Critical K concentration as fraction of maximum K          |        |      -                      |
-|                      | concentration for vegetative plant organs (leaves + stems) |        |                             |
-+———————-+————————————————————+——–+—————————–+
-| NRESIDLV             | Residual N fraction in leaves                              |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PRESIDLV             | Residual P fraction in leaves                              |        |    kg P kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KRESIDLV             | Residual K fraction in leaves                              |        |    kg K kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| NRESIDST             | Residual N fraction in stems                               |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PRESIDST             | Residual P fraction in stems                               |        |    kg P kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KRESIDST             | Residual K fraction in stems                               |        |    kg K kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| NLUE_NPK             | Coefficient for the reduction of RUE due to nutrient       |        |    -                        |
-|                      | (N-P-K) stress                                             |        |                             |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NMAXLV_TB</p></td>
+<td><p>Maximum N concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMAXLV_TB</p></td>
+<td><p>Maximum P concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KMAXLV_TB</p></td>
+<td><p>Maximum K concentration in leaves as function of DVS</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NMAXRT_FR</p></td>
+<td><dl class="simple">
+<dt>Maximum N concentration in roots as fraction of</dt><dd><p>maximum N concentration in leaves</p>
+</dd>
+</dl>
+</td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>PMAXRT_FR</p></td>
+<td><p>Maximum P concentration in roots as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>KMAXRT_FR</p></td>
+<td><p>Maximum K concentration in roots as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NMAXST_FR</p></td>
+<td><p>Maximum N concentration in stems as fraction of
+maximum N concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PMAXST_FR</p></td>
+<td><p>Maximum P concentration in stems as fraction of
+maximum P concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>KMAXST_FR</p></td>
+<td><p>Maximum K concentration in stems as fraction of
+maximum K concentration in leaves</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>NCRIT_FR</p></td>
+<td><p>Critical N concentration as fraction of maximum N
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>PCRIT_FR</p></td>
+<td><p>Critical P concentration as fraction of maximum P
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>KCRIT_FR</p></td>
+<td><p>Critical K concentration as fraction of maximum K
+concentration for vegetative plant organs (leaves + stems)</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>NRESIDLV</p></td>
+<td><p>Residual N fraction in leaves</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRESIDLV</p></td>
+<td><p>Residual P fraction in leaves</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KRESIDLV</p></td>
+<td><p>Residual K fraction in leaves</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NRESIDST</p></td>
+<td><p>Residual N fraction in stems</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>PRESIDST</p></td>
+<td><p>Residual P fraction in stems</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>KRESIDST</p></td>
+<td><p>Residual K fraction in stems</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>NLUE_NPK</p></td>
+<td><p>Coefficient for the reduction of RUE due to nutrient
+(N-P-K) stress</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="npk-translocation-parameters">
 <h3>NPK Translocation Parameters<a class="headerlink" href="#npk-translocation-parameters" title="Link to this heading">¶</a></h3>
-<p>+======================+============================================================+========+=============================+
-| Name                 | Description                                                | Type   | Unit                        |
-+======================+============================================================+========+=============================+
-| NRESIDLV             | Residual N fraction in leaves                              |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PRESIDLV             | Residual P fraction in leaves                              |        |    kg P kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KRESIDLV             | Residual K fraction in leaves                              |        |    kg K kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| NRESIDST             | Residual N fraction in stems                               |        |    kg N kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| PRESIDST             | Residual P fraction in stems                               |        |    kg P kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| KRESIDST             | Residual K fraction in stems                               |        |    kg K kg-1 dry biomass    |
-+———————-+————————————————————+——–+—————————–+
-| NPK_TRANSLRT_FR      | NPK translocation from roots as a fraction of resp.        |        |          -                  |
-|                      | total NPK amounts translocated from leaves and stems       |        |                             |
-+———————-+————————————————————+——–+—————————–+</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NRESIDLV</p></td>
+<td><p>Residual N fraction in leaves</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRESIDLV</p></td>
+<td><p>Residual P fraction in leaves</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>KRESIDLV</p></td>
+<td><p>Residual K fraction in leaves</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>NRESIDST</p></td>
+<td><p>Residual N fraction in stems</p></td>
+<td></td>
+<td><p>kg N kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>PRESIDST</p></td>
+<td><p>Residual P fraction in stems</p></td>
+<td></td>
+<td><p>kg P kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p>KRESIDST</p></td>
+<td><p>Residual K fraction in stems</p></td>
+<td></td>
+<td><p>kg K kg-1 dry biomass</p></td>
+</tr>
+<tr class="row-even"><td><p>NPK_TRANSLRT_FR</p></td>
+<td><p>NPK translocation from roots as a fraction of resp.
+total NPK amounts translocated from leaves and stems</p></td>
+<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="crop-template">
 <span id="id1"></span><h3>Crop Template<a class="headerlink" href="#crop-template" title="Link to this heading">¶</a></h3>
