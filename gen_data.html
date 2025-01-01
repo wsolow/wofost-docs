@@ -270,6 +270,7 @@
         <article role="main" id="furo-main-content">
           <section id="generating-data">
 <span id="gen-data"></span><h1>Generating Data<a class="headerlink" href="#generating-data" title="Permalink to this heading">¶</a></h1>
+<p>For generating data from multiple farms and policies simultaneously, see <a class="reference internal" href="#gen-multiple-data"><span class="std std-ref">Generating Data from Multiple Sources</span></a>.</p>
 <p>Generally, there are two types of data a user may want to generated: data from a prespecified policy and data from a trained RL Agent.
 See <a class="reference internal" href="#data-policies"><span class="std std-ref">Prespecified Policies</span></a> and <a class="reference internal" href="#data-rl"><span class="std std-ref">RL Agent Policies</span></a> for more information.</p>
 <p>Data is generated over a range of <code class="docutils literal notranslate"><span class="pre">years</span></code> and range of <code class="docutils literal notranslate"><span class="pre">latitudes</span></code> and longitudes. These ranges can be specified by command line arguments:</p>
@@ -337,6 +338,38 @@ specified <code class="docutils literal notranslate"><span class="pre">agent.pt<
 </ul>
 </div>
 </section>
+<section id="generating-data-from-multiple-sources">
+<span id="gen-multiple-data"></span><h2>Generating Data from Multiple Sources<a class="headerlink" href="#generating-data-from-multiple-sources" title="Permalink to this heading">¶</a></h2>
+<p>There are many instances where one may want to generate data from multiple policies and farms. For instance, a farmer may want to know
+how her policy performs when fertilizing wheat at another farm. This is the problem of Off Policy Evaluation.</p>
+<p>To generate data from multiple policies and farms, navigate to the <code class="docutils literal notranslate"><span class="pre">gen_data_multiple.py</span></code> file. For ease of use, each farm is specified by a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code>
+configuration file which is created when an environment is called. See <a class="reference internal" href="pcse_gym/env_creation.html#env-creation"><span class="std std-ref">Environment Creation</span></a> for more information. Modify multiple <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> configuration files
+to achieve the desired site and crop configuration. Loading configurations is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_fpaths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test/test1/config.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;test/test2/config.yaml&quot;</span><span class="p">]</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_envs</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">config_fpaths</span><span class="o">=</span><span class="n">config_fpaths</span><span class="p">)</span>
+
+<span class="c1"># Wrap environment with necessary wrappers</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="p">[</span><span class="n">utils</span><span class="o">.</span><span class="n">wrap_env_reward</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">env</span> <span class="ow">in</span> <span class="n">envs</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Additionally, each policy and the required arguments for the policy required are specified in a list and a dictionary. Policies can either be
+Reinforcement Learning agents (e.g. PPO, SAC, DQN, etc) or pre-specified policies in <code class="docutils literal notranslate"><span class="pre">pcse_gym.policies</span></code>. For agent policies, the only argument needed is
+is the relative path to the agent. The pre-specified policies require parameters. See <a class="reference internal" href="pcse_gym/policies.html#policies"><span class="std std-ref">Prespecified Policies</span></a> for more information.</p>
+<p>An example configuration would look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass the constructor for the policy, either a pcse_gym.policies or rl_utils.Agent class</span>
+<span class="n">pols</span> <span class="o">=</span> <span class="p">[</span><span class="n">PPO</span><span class="p">,</span> <span class="n">policies</span><span class="o">.</span><span class="n">Interval_N</span><span class="p">,</span> <span class="n">policies</span><span class="o">.</span><span class="n">Threshold_N</span><span class="p">]</span>
+
+<span class="c1"># Specify the kwargs for the policies. If using a PyTorch policy from rl_algs, use</span>
+<span class="c1"># the kwargs: `{&quot;state_fpath&quot;: &lt;path-to-agent&gt;}</span>
+<span class="n">pols_kwargs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;state_fpath&quot;</span><span class="p">:</span> <span class="s2">&quot;PPO_test/PPO/lnpkw-v0__rl_utils__1__1735688110/agent.pt&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;interval&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>To run the script, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data_multiple.py --save-folder test/multiple/ --data-file multiple</span>
+</pre></div>
+</div>
+<p>The output will be a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file with arrays of shape <code class="docutils literal notranslate"><span class="pre">(num_farms,</span> <span class="pre">num_policies,</span> <span class="pre">..)</span></code> which can then be used for algorithm training or evaluation, or data visualization.</p>
+</section>
 </section>
 
         </article>
@@ -397,6 +430,7 @@ specified <code class="docutils literal notranslate"><span class="pre">agent.pt<
 <li><a class="reference internal" href="#">Generating Data</a><ul>
 <li><a class="reference internal" href="#prespecified-policies">Prespecified Policies</a></li>
 <li><a class="reference internal" href="#rl-agent-policies">RL Agent Policies</a></li>
+<li><a class="reference internal" href="#generating-data-from-multiple-sources">Generating Data from Multiple Sources</a></li>
 </ul>
 </li>
 </ul>
