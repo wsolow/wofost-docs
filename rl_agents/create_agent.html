@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Creating a New RL Agent - WOFOST-Gym 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -301,10 +301,10 @@ the Policy class in <code class="docutils literal notranslate"><span class="pre"
 <h2>The Args Class<a class="headerlink" href="#the-args-class" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">rl_utils.RL_Args</span></code> dataclass contains experiment specific information for all RL Agents including Weights and Biases tracking
 and default experiment naming. An example Args class is shown below:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rl_utils</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rl_utils</span>
 
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Args</span><span class="p">(</span><span class="n">rl_utils</span><span class="o">.</span><span class="n">RL_Args</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Args</span><span class="p">(</span><span class="n">rl_utils</span><span class="o">.</span><span class="n">RL_Args</span><span class="p">):</span>
     <span class="c1"># Algorithm specific arguments</span>
     <span class="n">total_timesteps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;total timesteps of the experiments&quot;&quot;&quot;</span>
@@ -344,11 +344,11 @@ and default experiment naming. An example Args class is shown below:</p>
 Policy classes should also inherit the abstract class <code class="docutils literal notranslate"><span class="pre">rl_algs.Agent</span></code>.</p>
 <p>Some RL Algorithms, like Soft Actor-Critic, use more than one network. In this case, the other network can be declared under any name, as it is not required to load the policy (for data generation etc.)</p>
 <p>See an example of the actor class in <code class="docutils literal notranslate"><span class="pre">rl_algs/PPO.py</span></code> below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="kn">from</span> <span class="nn">rl_algs</span> <span class="kn">import</span> <span class="n">Agent</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl_algs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
 
-<span class="k">class</span> <span class="nc">PPO</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">Agent</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">envs</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PPO</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">Agent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">envs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">envs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">critic</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
@@ -370,7 +370,7 @@ Policy classes should also inherit the abstract class <code class="docutils lite
 <p>In addition to this header declaration, every Policy class must have a <code class="docutils literal notranslate"><span class="pre">get_action(obs)</span></code> function. This is a helper function for compatibility with data generation
 for policies.</p>
 <p>See an example below using the <code class="docutils literal notranslate"><span class="pre">PPO</span></code> agent:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Helper function to get action for compatibility with generating data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -387,7 +387,7 @@ takes in the <code class="docutils literal notranslate"><span class="pre">AgentA
 <p>The most important line in the <code class="docutils literal notranslate"><span class="pre">train(kwargs)</span></code> function is: <code class="docutils literal notranslate"><span class="pre">args</span> <span class="pre">=</span> <span class="pre">kwargs.PPO</span></code> if we are in <code class="docutils literal notranslate"><span class="pre">PPO.py</span></code>. This line gets the
 PPO-specific hyperparameter arguments.</p>
 <p>After this line, setup and training can continue as normal. We recommend starting with the following block of code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">PPO</span>
     <span class="n">run_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PPO/</span><span class="si">{</span><span class="n">kwargs</span><span class="o">.</span><span class="n">env_id</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">exp_name</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">num_steps</span><span class="p">)</span>
@@ -395,7 +395,7 @@ PPO-specific hyperparameter arguments.</p>
     <span class="n">args</span><span class="o">.</span><span class="n">num_iterations</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">total_timesteps</span> <span class="o">//</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span>
 
     <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">track</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">wandb</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">wandb</span>
 
         <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
             <span class="n">project</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">wandb_project_name</span><span class="p">,</span>

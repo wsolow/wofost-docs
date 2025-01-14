@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Reward Wrappers - WOFOST-Gym 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -289,12 +289,12 @@ See <a class="reference internal" href="env_creation.html#env-creation"><span cl
 <h2>Creating a Reward Wrapper<a class="headerlink" href="#creating-a-reward-wrapper" title="Permalink to this heading">¶</a></h2>
 <p>To create a reward wrapper, inherit the <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.RewardWrapper</span></code> class. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 function should have the following header:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RewardFertilizationThresholdWrapper</span><span class="p">(</span><span class="n">RewardWrapper</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RewardFertilizationThresholdWrapper</span><span class="p">(</span><span class="n">RewardWrapper</span><span class="p">):</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Modifies the reward to be a function with high penalties for if a</span>
 <span class="sd">threshold is crossed during fertilization or irrigation</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the :class:`RewardFertilizationThresholdWrapper` wrapper with an environment.&quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
@@ -307,7 +307,7 @@ function should have the following header:</p>
 from the <code class="docutils literal notranslate"><span class="pre">_take_action()</span></code> function which specifies how much water, Nitrogen, Phosphorous, or Potassium was applied to the crop.</p>
 <p>From this action tuple and the output of the crop simulation, the reward can be updated.</p>
 <p>See the example below which penalizes the application of any fertilizer or water, while rewarding the total growth of the crop, <code class="docutils literal notranslate"><span class="pre">WSO</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">act_tuple</span><span class="p">:</span><span class="nb">tuple</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_get_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">act_tuple</span><span class="p">:</span><span class="nb">tuple</span><span class="p">):</span>
 <span class="sd">&quot;&quot;&quot;Gets the reward as a penalty based on the amount of NPK/Water applied</span>
 
 <span class="sd">Args:</span>
@@ -331,7 +331,7 @@ new reward. For information on configuring simulation output, see <a class="refe
 especially if the environment was previously wrapped with <code class="docutils literal notranslate"><span class="pre">NPKDictObservationWrapper</span></code> or <code class="docutils literal notranslate"><span class="pre">NPKDictActionWrapper</span></code>.</p>
 <p>To ensure compatibility, copy the <code class="docutils literal notranslate"><span class="pre">step</span></code> function from <code class="docutils literal notranslate"><span class="pre">pcse_gym.wofost_base.NPK_Env</span></code> to
 the <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappers.NewRewardWrapper</span></code> class. Below is the template, which does not need modifications:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run one timestep of the environment&#39;s dynamics.</span>
 
 <span class="sd">    Sends action to the WOFOST model and recieves the resulting observation</span>

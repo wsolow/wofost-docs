@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Prespecified Policies - WOFOST-Gym 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -302,12 +302,12 @@ does not have these variables, an error will be thrown. For information on confi
 <h2>Creating a Prespecified Policy<a class="headerlink" href="#creating-a-prespecified-policy" title="Permalink to this heading">¶</a></h2>
 <p>It is likely that a prespecified policy needs to be created to fit the specific use case.</p>
 <p>Every prespecified policy should have the following header:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Threshold_N</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Threshold_N</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
 <span class="sd">&quot;&quot;&quot;Policy applying a small amount of Nitrogen at a given interval</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">required_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TOTN&quot;</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the :class:`Interval_N`.</span>
 
 <span class="sd">    Args:</span>
@@ -326,7 +326,7 @@ does not have these variables, an error will be thrown. For information on confi
 </ul>
 <p>After the header, the <code class="docutils literal notranslate"><span class="pre">_get_action(self,</span> <span class="pre">obs)</span></code> function should be created. For example, suppose we want to apply nitrogen fertilizer as long as a total threshold has not been reached.
 The function to do this would look like:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns an action that applies Nitrogen until a threshold is met</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">obs</span><span class="p">[</span><span class="s1">&#39;TOTN&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>

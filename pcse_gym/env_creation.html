@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Environment Creation - WOFOST-Gym 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -283,7 +283,7 @@ the crop simulation.</p>
 <p>directly, as <code class="docutils literal notranslate"><span class="pre">utils.make_gym_env(args)</span></code> also handles correctly passing arguments to the <code class="docutils literal notranslate"><span class="pre">gymnasium.make</span></code> function.</p>
 </div>
 <p>As an example, a default environment can be created with the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span><span class="o">,</span><span class="w"> </span><span class="nn">tyro</span>
 
 <span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">Args</span><span class="p">)</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
@@ -297,7 +297,7 @@ the crop simulation.</p>
 the environment actions and observations as dictionaries to interface with the <code class="docutils literal notranslate"><span class="pre">Policy</span></code> class in <code class="docutils literal notranslate"><span class="pre">pcse_gym.policies</span></code> which makes
 policy specification easy.</p>
 <p>To wrap the environment in these wrappers, do the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span><span class="o">,</span><span class="w"> </span><span class="nn">tyro</span>
 
 <span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">Args</span><span class="p">)</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_env</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
@@ -312,7 +312,7 @@ as this will make the agent unable to execute a policy.</p>
 </div>
 <p>Additionally, the user may want to specify different reward functions (e.g. to penalize fertilizer runoff or set irrigation limits) and then train a RL agent with this reward function.
 To do so, the environment should be instantiated as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span><span class="o">,</span> <span class="nn">tyro</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span><span class="o">,</span><span class="w"> </span><span class="nn">tyro</span>
 
 <span class="n">args</span> <span class="o">=</span> <span class="n">tyro</span><span class="o">.</span><span class="n">cli</span><span class="p">(</span><span class="n">Args</span><span class="p">)</span>
 
