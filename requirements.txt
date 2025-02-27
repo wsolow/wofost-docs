@@ -36,8 +36,6 @@ omegaconf==2.3.0
 openpyxl==3.1.5
 packaging==24.2
 pandas==2.2.3
--e git+ssh://git@github.com/wsolow/pcse.git@00fe3e05fe3446dc6d3c668ab68d5c6c116f2a97#egg=pcse
--e git+ssh://git@github.com/wsolow/pcse_gym.git@f64fc451ea35f5e1b6b2ac16e12d617663bc7c14#egg=pcse_gym
 pillow==11.0.0
 platformdirs==4.3.6
 protobuf==5.29.2
