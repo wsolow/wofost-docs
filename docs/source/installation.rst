@@ -9,7 +9,7 @@ pcse and pcse_gym are included.
 
 .. code-block:: console
 
-  git clone --recurse-submodules git@github.com:wsolow/wofost-gym.git
+  git clone git@github.com:Intelligent-Reliable-Autonomous-Systems/WOFOSTGym.git
 
 We recommend using `conda <https://conda.org/>`_ to manage the virtual environment. Code was written using
 Python 3.10.9, although later versions may be compatible. Perform:
