@@ -31,7 +31,7 @@ After the Agromanagement Heading, there must be a valid ``SiteCalendar``, which 
             longitude: 5
             year: 1984
             site_name: oregon
-            site_variation: Oregon_1
+            site_variation: oregon_1
             site_start_date: 1985-01-01
             site_end_date: 1985-12-01
 
@@ -103,7 +103,7 @@ After the three parts outlined above, a complete example would look like:
             longitude: 5
             year: 1984
             site_name: oregon
-            site_variation: Oregon_1
+            site_variation: oregon_1
             site_start_date: 1985-01-01
             site_end_date: 1985-12-01
         CropCalendar:
